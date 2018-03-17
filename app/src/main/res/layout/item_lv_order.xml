@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@color/white"
+              >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/freight_rules_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center"
+                android:text="@string/freight_rules"
+                android:paddingRight="5dp"
+                android:textColor="@color/colorPrimaryRed"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/contact_service_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="@string/contact_service"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryRed"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:gravity="center_vertical">
+
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="5dp"
+            android:background="#22999999"
+            android:src="@drawable/bg_default"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/nameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:singleLine="true"
+                android:textSize="25dp"
+                android:textColor="@color/txt_black"/>
+
+            <TextView
+                android:id="@+id/SpecificationsTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/nameTv"
+                android:singleLine="true"
+                android:textSize="25dp"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/priceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/SpecificationsTv"
+                android:layout_marginTop="20dp"
+                android:textColor="#FF0000"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/numTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/priceTv"
+                android:layout_marginRight="30dp"
+                android:textSize="25dp"
+                android:textColor="@color/txt_black"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/background_color"/>
+
+
+
+</LinearLayout>

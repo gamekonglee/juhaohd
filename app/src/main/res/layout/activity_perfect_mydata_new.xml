@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@mipmap/bg_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:id="@+id/et_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="48sp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="60dp"
+
+            android:text="修改个人信息"
+            />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                >
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/save_rl"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_alignParentRight="true">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_ok"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="900dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginLeft="90dp"
+        android:background="@drawable/bg_corner_white_full_10">
+        <RelativeLayout
+            android:id="@+id/head_rl"
+            style="@style/mine_item_style02"
+            android:layout_marginTop="10dp"
+            android:layout_height="160dp"
+            >
+            <TextView
+                android:id="@+id/head_tv"
+                style="@style/mine_text_style02"
+                android:text="头像"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/head_iv"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@mipmap/icon_head"
+                android:layout_marginRight="12dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+        <View
+            style="@style/view_style"
+            />
+
+        <RelativeLayout
+            android:id="@+id/name_rl"
+            style="@style/mine_item_style02"
+            >
+            <TextView
+                android:id="@+id/name_title_tv"
+                style="@style/mine_text_style02"
+                android:text="@string/name"/>
+            <TextView
+                android:id="@+id/name_tv"
+                style="@style/mine_text_style03"
+                android:text="坏一点"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/view_style"
+            />
+
+        <RelativeLayout
+            android:id="@+id/sex_rl"
+            style="@style/mine_item_style02"
+            >
+            <TextView
+                android:id="@+id/sex_title_tv"
+                style="@style/mine_text_style02"
+                android:text="@string/sex"/>
+            <TextView
+                android:id="@+id/sex_tv"
+                style="@style/mine_text_style03"
+                android:text="男"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/view_style"
+            />
+
+        <RelativeLayout
+            android:id="@+id/birthday_rl"
+            android:visibility="gone"
+            style="@style/mine_item_style02"
+            >
+            <TextView
+                android:id="@+id/birthday_title_tv"
+                style="@style/mine_text_style02"
+                android:text="@string/birthday"/>
+            <TextView
+                android:id="@+id/birthday_tv"
+                style="@style/mine_text_style03"
+                android:text="1992-10-5"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/phone_rl"
+            style="@style/mine_item_style02"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            >
+            <TextView
+                android:id="@+id/phone_title_tv"
+                style="@style/mine_text_style02"
+                android:text="@string/phone"/>
+            <TextView
+                android:id="@+id/phone_tv"
+                style="@style/mine_text_style03"
+                android:text="13138569878"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/view_style"
+            />
+
+        <RelativeLayout
+            android:id="@+id/telephone_rl"
+            style="@style/mine_item_style02"
+            android:visibility="gone"
+            >
+            <TextView
+                android:id="@+id/telephone_title_tv"
+                style="@style/mine_text_style02"
+                android:text="@string/telephone"/>
+            <TextView
+                android:id="@+id/telephone_tv"
+                style="@style/mine_text_style03"
+                android:text="0770-6986549"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/view_style"
+            android:visibility="gone"
+            />
+
+        <RelativeLayout
+            android:id="@+id/email_rl"
+            style="@style/mine_item_style02"
+            android:visibility="gone"
+            >
+            <TextView
+                android:id="@+id/email_title_tv"
+                style="@style/mine_text_style02"
+                android:text="@string/email"/>
+            <TextView
+                android:id="@+id/email_tv"
+                style="@style/mine_text_style03"
+                android:text="1458798787@qq.com"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/update_password_rl"
+            style="@style/mine_item_style02"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:id="@+id/update_password_title_tv"
+                style="@style/mine_text_style02"
+                android:text="@string/update_password"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+        <FrameLayout
+            android:id="@+id/fl_content"
+            android:layout_width="800dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content">
+            <include android:id="@+id/mydata_section_head" layout="@layout/mydata_section_head"/>
+            <include android:id="@+id/mydata_section_username" layout="@layout/mydata_section_username"/>
+            <include android:id="@+id/mydata_section_sex" layout="@layout/mydata_section_sex"/>
+            <include android:id="@+id/mydata_section_password" layout="@layout/mydata_section_password"/>
+        </FrameLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
+    <ImageView
+        android:id="@+id/topLeftBtn"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@mipmap/share_iv"
+        android:onClick="goBack"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        />
+    </RelativeLayout>

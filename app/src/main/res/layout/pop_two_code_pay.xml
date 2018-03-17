@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/main_rl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/deep_transparent"
+                android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+
+        <bc.juhaohd.com.ui.view.MyWebView
+            android:id="@+id/web_wv"
+            android:layout_width="520dp"
+            android:layout_height="520dp"
+            android:layout_centerInParent="true"
+            android:background="@color/deep_transparent"
+            />
+
+        <TextView
+            android:id="@+id/tv_pay_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="请使用支付宝扫码支付"
+            android:textColor="@color/colorPrimaryRed"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

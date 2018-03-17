@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+    <include layout="@layout/head"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_01"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_xiandaijianyue"
+            style="@style/tv_home_text"
+            android:text="现代简约"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp">
+    <ImageView
+        android:id="@+id/iv_02"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+    <TextView
+        android:id="@+id/tv_oushi"
+        android:text="欧式"
+        style="@style/tv_home_text"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+    </RelativeLayout>
+</LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_03"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_zhongshi"
+            android:text="中式"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_04"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+
+        <TextView
+            android:id="@+id/tv_xinzhongshi"
+            android:text="新中式"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+
+            android:layout_width="300dp"
+            android:layout_height="620dp">
+            <ImageView
+                android:id="@+id/iv_09"
+                android:layout_width="300dp"
+                android:layout_height="620dp" />
+            <TextView
+                android:id="@+id/tv_quanbu"
+                android:text="全部"
+                style="@style/tv_home_text"
+                android:layout_width="300dp"
+                android:layout_height="620dp" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_05"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_meishi"
+            android:text="美式"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_06"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_yijia"
+            android:text="宜家"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_07"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_houxiandai"
+            android:text="后现代"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_08"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_tianyuan"
+            android:text="田园"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+    </LinearLayout>

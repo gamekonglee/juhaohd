@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_corner_white_full_10"
+    android:orientation="vertical"
+    android:id="@+id/order_lv"
+    >
+    <RelativeLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <TextView
+            android:id="@+id/code_tv"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textColor="#444444"
+            android:textSize="36sp"/>
+        <TextView
+            android:text=""
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:id="@+id/state_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorPrimaryRed"
+            android:textSize="25dp"/>
+    </RelativeLayout>
+<View
+    android:background="#eeeeee"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="260dp"
+            android:layout_gravity="center_vertical"
+            android:background="#ffffff"
+            android:scrollbars="none" >
+            <LinearLayout
+                android:id="@+id/id_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </HorizontalScrollView>
+        <ListView
+            android:id="@+id/lv"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_code"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp">
+
+            <bc.juhaohd.com.ui.view.MyWebView
+                android:id="@+id/webview"
+                android:layout_width="132dp"
+                android:layout_height="132dp"/>
+            <TextView
+                android:text="扫码付款"
+                android:textColor="#444444"
+                android:textSize="30sp"
+                android:layout_below="@+id/webview"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <View
+        android:background="#eeeeee"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="20dp"
+            android:textColor="#444444"
+            android:textSize="24sp"
+            />
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="250dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="合计:"
+                android:textSize="30sp"
+                android:textColor="#444444"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="00.00"
+                android:visibility="visible"
+                android:id="@+id/total_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_theme"
+                android:textSize="36sp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/do_tv"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/bg_corner_orange_full"
+            android:gravity="center"
+            android:text="@string/pay"
+            android:visibility="visible"
+            android:textColor="#ffffff"
+            android:textSize="24sp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/order_shape_active"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="30dp">
+
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            >
+            <TextView
+                android:id="@+id/old_money"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/fontColora"
+                android:textSize="23dp"
+                />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/new_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/old_money"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/red"
+                android:textSize="23dp"
+                />
+
+
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/remark_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/new_money"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/fontColora"
+                android:textSize="12dp"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            >
+
+
+            <TextView
+                android:id="@+id/do02_tv"
+                android:visibility="gone"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/order02_shape_active"
+                android:gravity="center"
+                android:text="取消订单"
+                android:textColor="@color/txt_black"
+                android:textSize="20dip"/>
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/do03_tv"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@id/do02_tv"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/order02_shape_active"
+                android:gravity="center"
+                android:text="联系卖家"
+                android:textColor="@color/txt_black"
+                android:textSize="20dip"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

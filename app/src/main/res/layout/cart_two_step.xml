@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <bc.juhaohd.com.ui.view.MyScrollView
+        android:id="@+id/msv"
+        android:layout_marginBottom="298dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+    <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:paddingLeft="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:text="收货地址"
+            android:textColor="#444444"
+            android:textSize="36sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iv_add_address"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:src="@mipmap/icon_add_cart"
+            android:layout_width="54dp"
+            android:layout_height="54dp" />
+
+    </RelativeLayout>
+    <View
+        android:background="#dddddd"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <bc.juhaohd.com.ui.view.TextViewPlus
+            android:id="@+id/tv_tips"
+            android:text="您还没有收货地址\n请点击右上角按钮添加收货地址"
+            android:textColor="#999999"
+            android:textSize="30sp"
+            android:drawableTop="@mipmap/icon_address"
+            app:top_width="78dp"
+            app:top_height="70dp"
+            android:layout_marginTop="43dp"
+            android:drawablePadding="-35dp"
+            android:layout_width="match_parent"
+            android:lineSpacingExtra="15dp"
+            android:gravity="center"
+
+            android:layout_height="280dp" />
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:background="@android:color/transparent">
+                    <com.lib.common.hxp.view.ListViewForScrollView
+                        android:id="@+id/order_sv"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp"
+                        android:verticalSpacing="15dp"
+                        android:dividerHeight="0dip"
+                        android:listSelector="@android:color/transparent"
+                        android:background="@android:color/transparent"/>
+            </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
+    </bc.juhaohd.com.ui.view.MyScrollView>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="49dp"
+                android:text="商品总额 "
+                android:textColor="#444444"
+                android:textSize="36sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/totla_money_tv"
+                android:text="00.00"
+                android:textColor="#444444"
+                android:textSize="36sp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="49dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="42dp"
+                android:text="应付总额 "
+                android:textColor="#444444"
+                android:textSize="36sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/summoney_tv"
+                android:text="00.00"
+                android:textColor="@color/orange_theme"
+                android:textSize="36sp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="42dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/settle_tv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:text="去支付"
+            android:gravity="center"
+            android:textSize="42sp"
+            android:layout_marginTop="57dp"
+            android:background="@drawable/bg_corner_bottom_orange"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</RelativeLayout>

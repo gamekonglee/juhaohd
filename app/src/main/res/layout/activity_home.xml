@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/main_rl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/bg_home"
+                android:orientation="vertical"
+    >
+    <LinearLayout
+        android:id="@+id/main_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/pindexlogo"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/shangcheng_iv"
+                android:layout_width="410dp"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/shangcheng"/>
+
+            <ImageView
+                android:id="@+id/shipin_iv"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/shangcheng_iv"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/shipin"/>
+
+            <ImageView
+                android:id="@+id/guanwang_iv"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/shipin_iv"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/guanwang"/>
+
+            <ImageView
+                android:id="@+id/zhanting360_iv"
+                android:layout_width="200dp"
+                android:layout_height="210dp"
+                android:layout_below="@id/shangcheng_iv"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/shipin_iv"
+                android:scaleType="fitXY"
+                android:src="@drawable/zhanting360"/>
+
+            <LinearLayout
+                android:id="@+id/banner_ll"
+                android:layout_width="650dp"
+                android:layout_height="280dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/shangcheng_iv"
+                android:orientation="vertical">
+                <com.bigkoo.convenientbanner.ConvenientBanner
+                    android:id="@+id/convenientBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/lianxi_rl"
+                android:layout_width="340dp"
+                android:layout_height="130dp"
+                android:layout_below="@+id/banner_ll"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/zhanting360_iv"
+                android:background="@drawable/lianxi"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/operator_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="25dip"
+                    />
+
+                <TextView
+                    android:id="@+id/address_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/operator_tv"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="15dip"
+                    />
+
+                <TextView
+                    android:id="@+id/tel_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/address_tv"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="15dip"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/erweima_rl"
+                android:layout_width="300dp"
+                android:layout_height="130dp"
+                android:layout_below="@+id/banner_ll"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/lianxi_rl"
+                android:background="#E37751">
+
+                <TextView
+                    android:id="@+id/two_code_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="40dp"
+                    android:text="扫描安装钜豪商城APP"
+                    android:textColor="@color/white"
+                    android:textSize="17dip"
+                    />
+
+                <TextView
+                    android:id="@+id/two_code_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/two_code_title_tv"
+                    android:layout_below="@id/two_code_title_tv"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="17dip"
+                    />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/icon_two_code"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/version_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:gravity="center|top"
+        android:padding="20dp"
+        android:layout_below="@id/main_ll"
+        android:textColor="@color/white"/>
+</RelativeLayout>

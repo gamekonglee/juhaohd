@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingRight="30dp">
+
+                <TextView
+                    android:text="name"
+                    android:id="@+id/name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#444444"
+                    android:layout_marginTop="5dp"
+                    android:textSize="36sp"
+                    android:singleLine="true"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="property"
+                    android:id="@+id/property_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/txt_black"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/name_tv"
+                    android:textSize="36sp"
+                    />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:text="sumoney"
+        android:id="@+id/goods_summoney_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/orange_theme"
+        android:textSize="36sp"
+        />
+
+    <TextView
+        android:text="2"
+        android:id="@+id/goods_sum_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textColor="#444444"
+        android:textSize="36sp"
+        />
+</LinearLayout>
+
+<TextView
+    android:id="@+id/tv_mark_price"
+    android:text="市场价："
+    android:textColor="#444444"
+    android:textSize="30sp"
+    android:layout_marginTop="20dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_cut_price"
+                    android:text="已优惠："
+                    android:textColor="#444444"
+                    android:layout_marginTop="5dp"
+                    android:textSize="30sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

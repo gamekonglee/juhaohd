@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/head"/>
+<LinearLayout
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="300dp"
+    android:layout_height="300dp">
+    <ImageView
+        android:id="@+id/iv_01"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+    <TextView
+        android:id="@+id/tv_keting"
+        android:text="客厅"
+        style="@style/tv_home_text"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp">
+    <ImageView
+        android:id="@+id/iv_02"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+    <TextView
+        android:id="@+id/tv_ertongfang"
+        android:text="儿童房"
+        style="@style/tv_home_text"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+    </RelativeLayout>
+</LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_03"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_canting"
+            android:text="餐厅"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_04"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_weiyujian"
+            android:text="卫浴间"
+            style="@style/tv_home_text"
+
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_louti"
+            android:text="楼梯/拐角"
+            android:background="@mipmap/icon_space_gj"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="193.3dp" />
+        <TextView
+            android:id="@+id/tv_quanbu"
+            android:text="全部"
+            android:background="@mipmap/icon_space_qb"
+            style="@style/tv_home_text"
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="193.3dp" />
+        <TextView
+            android:id="@+id/tv_zoulang"
+            android:text="过道/走廊"
+            style="@style/tv_home_text"
+            android:background="@mipmap/icon_space_zl"
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="193.3dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_05"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_woshi"
+            android:text="卧室"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_06"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_bieshu"
+            android:text="别墅"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_07"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_shufang"
+            android:text="书房"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+        <ImageView
+            android:id="@+id/iv_08"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_yangtai"
+            android:text="阳台"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+    </LinearLayout>

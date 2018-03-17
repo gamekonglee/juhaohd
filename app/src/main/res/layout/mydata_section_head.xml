@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/bg_corner_white_full_10"
+    android:layout_width="800dp"
+    android:visibility="gone"
+        android:layout_height="542dp">
+
+        <TextView
+            android:text="修改头像"
+            android:textColor="#444444"
+            android:textSize="36sp"
+            android:layout_margin="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_marginLeft="30dp"
+                android:src="@mipmap/photo_icon"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+            <TextView
+                android:text="上传本地相片"
+                android:textSize="36sp"
+                android:textColor="@color/orange_theme"
+                android:layout_gravity="center"
+                android:layout_marginLeft="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    <Button
+        android:id="@+id/btn_save_head"
+        android:text="保存"
+        android:textColor="#ffffff"
+        android:textSize="48sp"
+        android:background="@color/orange_theme"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+</LinearLayout>

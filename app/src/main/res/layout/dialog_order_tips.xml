@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="800dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_corner_white_full_10">
+
+    <TextView
+        android:layout_marginTop="80dp"
+        android:text="施主! 回头不是岸!\n您仍然要离开吗?"
+        android:lineSpacingExtra="15dp"
+        android:textColor="#444444"
+        android:textSize="54sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginTop="60dp"
+        android:background="#dddddd"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="48dp"
+            android:background="@drawable/bg_corner_white_left_bottom"
+            android:id="@+id/tv_ensure"
+            android:text="是的"
+            android:textColor="#444444"
+            android:textSize="54sp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent" />
+        <View
+            android:background="#dddddd"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_dimiss"
+            android:text="取消"
+            android:gravity="center"
+            android:textColor="#444444"
+            android:textSize="54sp"
+            android:background="@drawable/bg_corner_white_right_bottom"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</LinearLayout>

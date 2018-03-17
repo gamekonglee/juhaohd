@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <include layout="@layout/head"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="300dp"
+    android:layout_height="620dp">
+    <ImageView
+        android:id="@+id/iv_diaodeng"
+        android:layout_width="300dp"
+        android:layout_height="620dp"/>
+    <TextView
+        android:id="@+id/tv_diaodeng"
+        style="@style/tv_home_text"
+        android:layout_width="300dp"
+        android:layout_height="620dp"
+        android:text="吊灯" />
+</RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp" >
+            <ImageView
+                android:id="@+id/iv_taideng"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+            <TextView
+                android:id="@+id/tv_taideng"
+                android:text="台灯"
+                style="@style/tv_home_text"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp" >
+        <ImageView
+            android:id="@+id/iv_bideng"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/tv_bideng"
+            android:text="壁灯"
+            style="@style/tv_home_text"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="300dp"
+        android:layout_height="620dp">
+    <ImageView
+        android:id="@+id/iv_luodideng"
+        android:layout_width="300dp"
+        android:layout_height="620dp"/>
+    <TextView
+        android:id="@+id/tv_luodideng"
+        android:text="落地灯"
+        style="@style/tv_home_text"
+        android:layout_width="300dp"
+        android:layout_height="620dp" />
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="620dp"
+            android:layout_height="300dp">
+            <ImageView
+                android:id="@+id/iv_xidingdeng"
+                android:layout_width="620dp"
+                android:layout_height="300dp" />
+            <TextView
+                android:id="@+id/tv_xidingdeng"
+                android:text="吸顶灯"
+                style="@style/tv_home_text"
+                android:layout_width="620dp"
+                android:layout_height="300dp"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="300dp"
+                android:layout_height="300dp" >
+            <ImageView
+                android:id="@+id/iv_shangye"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+            <TextView
+                android:id="@+id/tv_shangyezhaoming"
+                android:text="商业照明"
+                style="@style/tv_home_text"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginLeft="20dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp" >
+            <ImageView
+                android:id="@+id/iv_quanbu"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+            <TextView
+                android:id="@+id/tv_quanbu"
+                android:text="全部"
+                style="@style/tv_home_text"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+    </LinearLayout>

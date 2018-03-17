@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical">
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="@color/white"-->
+        <!--android:minHeight="?attr/actionBarSize">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/et_search"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="25dp"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:text="@string/lamp_scheme"-->
+                <!--/>-->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/add_rl"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_alignParentRight="true">-->
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="20sp"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:text="@string/add"/>-->
+            <!--</RelativeLayout>-->
+        <!--</RelativeLayout>-->
+
+
+    <!--</android.support.v7.widget.Toolbar>-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color">
+
+
+        <include layout="@layout/common_error" />
+        <LinearLayout
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.baiiu.filter.DropDownMenu
+                android:id="@+id/dropDownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.lib.common.hxp.view.PullToRefreshLayout
+                    android:id="@+id/mFilterContentView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <include layout="@layout/refresh_head" />
+                    <!-- 支持所有实现Pullable接口的View -->
+
+                    <com.lib.common.hxp.view.PullableGridView
+                        android:id="@+id/gridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:horizontalSpacing="15dp"
+                        android:numColumns="3"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="5dp"
+                        android:scrollbars="none"
+                        android:background="@color/background_color"
+                        android:verticalSpacing="15dp" />
+
+                    <include layout="@layout/load_more" />
+
+                </com.lib.common.hxp.view.PullToRefreshLayout>
+            </com.baiiu.filter.DropDownMenu>
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/pd2"
+            style="@style/Base.Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:background="@android:color/transparent"
+    >
+    <RelativeLayout
+        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:text="name_tv"
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="27sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="proPriceTv"
+                android:id="@+id/proPriceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:textSize="48sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ff9000"/>
+            <TextView
+                android:id="@+id/old_price"
+                android:textSize="36sp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+
+        <com.lib.common.hxp.view.ListViewForScrollView
+            android:id="@+id/properties_lv"
+            android:visibility="gone"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            >
+
+        </com.lib.common.hxp.view.ListViewForScrollView>
+        <View
+            android:layout_marginTop="1dp"
+            style="@style/view_style"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <com.lib.common.hxp.view.ListViewForScrollView
+            android:id="@+id/parameter_lv"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:background="@android:color/transparent"
+            android:horizontalSpacing="15dp"
+            android:numColumns="2"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:scrollbars="none"
+            android:verticalSpacing="15dp"/>
+        <LinearLayout
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="数量:  "
+                android:visibility="gone"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"/>
+            <include
+                android:layout_marginLeft="15dp"
+                android:id="@+id/number_input_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/number_input_et_new"
+                android:layout_centerVertical="true"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/iv_code"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="164dp"
+        android:layout_marginBottom="200dp"
+        android:layout_marginRight="60dp"
+        android:layout_height="164dp" />
+    <TextView
+        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="150dp"
+        android:text="分享给好友"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
+    </LinearLayout>

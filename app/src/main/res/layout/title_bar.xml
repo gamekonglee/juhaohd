@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bc.juhaohd.com.ui.view.BottomBar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="65dp"
+    android:background="@color/white"
+    android:orientation="horizontal">
+    <!--首页-->
+    <LinearLayout
+        android:id="@+id/frag_home_ll"
+        style="@style/bottom_ll_style">
+
+        <ImageView
+            android:id="@+id/frag_home_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/top_bot_bar"/>
+
+        <TextView
+            android:id="@+id/frag_home_tv"
+            style="@style/bottom_text_style"
+            android:text="首页"/>
+    </LinearLayout>
+    <!--产品-->
+    <LinearLayout
+        android:id="@+id/frag_product_ll"
+        style="@style/bottom_ll_style">
+
+        <ImageView
+            android:id="@+id/frag_product_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/top_bot_bar"/>
+
+        <TextView
+            android:id="@+id/frag_product_tv"
+            style="@style/bottom_text_style"
+            android:text="@string/frag_top"/>
+    </LinearLayout>
+    <!--场景-->
+    <LinearLayout
+        android:id="@+id/frag_diy_ll"
+        style="@style/bottom_ll_style">
+
+        <ImageView
+            android:id="@+id/frag_diy_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/product_bot_bar"/>
+
+        <TextView
+            android:id="@+id/frag_diy_tv"
+            style="@style/bottom_text_style"
+            android:text="@string/frag_product"/>
+    </LinearLayout>
+    <!--方案-->
+    <LinearLayout
+        android:id="@+id/frag_match_ll"
+        style="@style/bottom_ll_style">
+
+        <ImageView
+            android:id="@+id/frag_match_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/match_bot_bar"/>
+
+        <TextView
+            android:id="@+id/frag_match_tv"
+            style="@style/bottom_text_style"
+            android:text="@string/frag_match"/>
+    </LinearLayout>
+    <!--购物车-->
+    <RelativeLayout
+        android:id="@+id/frag_cart_ll"
+        style="@style/bottom_ll_style">
+
+        <ImageView
+            android:id="@+id/frag_cart_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/cart_bot_bar"/>
+
+        <TextView
+            android:id="@+id/frag_cart_tv"
+            style="@style/bottom_text_style"
+            android:layout_below="@id/frag_cart_iv"
+            android:text="@string/frag_cart"/>
+
+        <TextView
+            android:id="@+id/unMessageReadTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/bg_unread_count"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#FFFFFF"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+    <!--我的-->
+    <LinearLayout
+        android:id="@+id/frag_mine_ll"
+        style="@style/bottom_ll_style">
+
+        <ImageView
+            android:id="@+id/frag_mine_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/mine_bot_bar"/>
+
+        <TextView
+            android:id="@+id/frag_mine_tv"
+            style="@style/bottom_text_style"
+            android:text="@string/frag_mine"/>
+    </LinearLayout>
+
+</bc.juhaohd.com.ui.view.BottomBar>

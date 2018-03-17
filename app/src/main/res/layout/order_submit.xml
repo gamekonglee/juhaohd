@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/bg_corner_white_full_10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+    <TextView
+        android:text="选择物流"
+        android:textColor="#444444"
+        android:textSize="36sp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+   <RadioGroup
+       android:id="@+id/radioGroup"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <RadioButton
+           android:id="@+id/radioLogistic"
+           android:text="物流"
+           android:textColor="#444444"
+           android:textSize="36sp"
+           android:button="@drawable/rb_selector_orange"
+           android:paddingLeft="15dp"
+           android:layout_marginLeft="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <RadioButton
+           android:id="@+id/radioEMS"
+           android:checked="true"
+           android:text="快递"
+           android:textColor="#444444"
+           android:textSize="36sp"
+           android:button="@drawable/rb_selector_orange"
+           android:paddingLeft="15dp"
+           android:layout_marginLeft="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+
+   </RadioGroup>
+</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/logistic_type_rl"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/logistic_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/logistic_type"
+            android:textColor="#444444"
+            android:visibility="gone"
+            android:textSize="36sp"
+            />
+
+        <TextView
+            android:text="2222"
+            android:id="@+id/loginstic_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="#444444"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:text="地址"
+        android:id="@+id/loginstic_address_tv"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:textColor="#444444"
+        android:textSize="36sp"
+        android:visibility="visible"
+        />
+    <TextView
+        android:layout_marginRight="30dp"
+        android:id="@+id/loginstic_phone_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#444444"
+        android:textSize="36sp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:text="18024157878"
+        android:visibility="visible"
+        />
+
+</LinearLayout>
+
+
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/type01_iv"
+            style="@style/mine_image_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"/>
+    </LinearLayout>
+    <com.lib.common.hxp.view.PullableScrollView
+        android:id="@+id/scrollView"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color"
+        android:scrollbars="none">
+    <com.yjn.swipelistview.swipelistviewlibrary.widget.SwipeMenuListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:dividerHeight="1dp"/>
+    </com.lib.common.hxp.view.PullableScrollView>
+
+</LinearLayout>

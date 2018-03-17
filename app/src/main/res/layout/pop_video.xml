@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/main_rl"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@drawable/bg_corner_white_full_10"
+        android:padding="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/xingxiang_iv"
+            android:layout_width="420dp"
+            android:layout_height="280dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/xingxiang"/>
+
+        <ImageView
+            android:id="@+id/juhaozhige_iv"
+            android:layout_width="420dp"
+            android:layout_height="280dp"
+            android:layout_below="@id/xingxiang_iv"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/juhaozhige"/>
+
+        <ImageView
+            android:id="@+id/gongcheng_iv"
+            android:layout_width="420dp"
+            android:layout_height="280dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/xingxiang_iv"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gongcheng"/>
+
+        <ImageView
+            android:id="@+id/xinmoshi_iv"
+            android:layout_width="420dp"
+            android:layout_height="280dp"
+            android:layout_below="@id/gongcheng_iv"
+            android:layout_toRightOf="@id/juhaozhige_iv"
+            android:scaleType="centerCrop"
+            android:src="@drawable/xinmoshi"/>
+    </RelativeLayout>
+</RelativeLayout>

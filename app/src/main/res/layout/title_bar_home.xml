@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <bc.juhaohd.com.ui.view.BottomBarOfHome
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/frag_home_tv"
+            android:text="首页"
+            style="@style/tv_home_bottom"
+            />
+        <TextView
+            android:id="@+id/frag_type_tv"
+            android:text="类型"
+            style="@style/tv_home_bottom"/>
+        <TextView
+            android:id="@+id/frag_space_tv"
+            android:text="空间"
+            style="@style/tv_home_bottom" />
+        <TextView
+            android:id="@+id/frag_style_tv"
+            android:text="风格"
+            style="@style/tv_home_bottom" />
+        <TextView
+            android:id="@+id/frag_search_tv"
+            android:text="搜索"
+            style="@style/tv_home_bottom" />
+        <TextView
+            android:id="@+id/frag_sceen_tv"
+            android:text="场景库"
+            style="@style/tv_home_bottom" />
+        <TextView
+            android:id="@+id/frag_mine_tv"
+            android:text="我的"
+            style="@style/tv_home_bottom"/>
+
+    </bc.juhaohd.com.ui.view.BottomBarOfHome>

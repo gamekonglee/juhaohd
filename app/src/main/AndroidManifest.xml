@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="bc.juhaohd.com"
+    android:installLocation="auto">
+
+    <!-- <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="21" /> -->
+
+
+    <!-- Required -->
+    <permission
+        android:name="bc.juhaohd.com.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="bc.juhaohd.com.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 百度地图的服务 -->
+    <!-- 这个权限用于进行网络定位 -->
+    <!-- 这个权限用于访问GPS定位 -->
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <!-- 用于读取手机当前的状态 -->
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <!-- 必选 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 允许程序录制音频 -->
+    <!-- 短信 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+    <application
+        android:name=".ui.activity.IssueApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <meta-data
+            android:name="PGYER_APPID"
+            android:value="2ab67b8da2a9b183e66df2ef39dbdec1" />
+
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:icon="@mipmap/icon_logo"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Y77cKbaVnxxZ9MTPMkryDRtIKkHONkM6" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.HomeShowActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.UserLogActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.UserLogAddActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.buy.FilterTypeActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.WebActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.PerfectMydataActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.EditValueActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.SettingActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.MyOrderActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.BrandPlayActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.UpdatePasswordActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.UserAddrActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.UserAddrAddActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.LoginActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme"></activity>
+        <activity
+            android:name=".ui.activity.user.RegiestActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.Regiest01Activity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.CollectActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.product.ProDetailActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.buy.ShoppingCartActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.product.SelectGoodsActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.product.ClassifyGoodsActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.programme.DiyActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.programme.SelectSceneActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.buy.ConfirmOrderActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.SimpleScannerActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.MessageActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.programme.SelectSchemeActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.MessageDetailActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.OrderDetailActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.programme.ImageDetailActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.product.ProductDetailHDActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.buy.ExInventoryActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <!-- 第三方 -->
+
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 微信分享回调 -->
+        <activity
+            android:name="cn.sharesdk.demo.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 极光推送 -->
+
+
+        <!-- Rich push 核心功能 since 2.0.6 -->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle" />
+
+        <!-- Required SDK核心功能 -->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="bc.juhaohd.com" />
+            </intent-filter>
+        </activity>
+        <!-- Required  SDK核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".service.UpdateApkService"
+            android:enabled="true" />
+        Required SDK 核心功能
+        可配置android:process参数将PushService放在其他进程中
+        <!-- <service -->
+        <!-- android:name="cn.jpush.android.service.PushService" -->
+        <!-- android:process=":multiprocess" -->
+        <!-- tools:node="replace"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="cn.jpush.android.intent.REGISTER" /> -->
+        <!-- <action android:name="cn.jpush.android.intent.REPORT" /> -->
+        <!-- <action android:name="cn.jpush.android.intent.PushService" /> -->
+        <!-- <action android:name="cn.jpush.android.intent.PUSH_TIME" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+
+
+        <!-- <service android:name="cn.jpush.android.service.PushService" -->
+        <!-- android:process=":multiprocess" -->
+        <!-- tools:node="replace" > -->
+
+
+        <!-- </service> -->
+
+
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+
+                <category android:name="bc.juhaohd.com" />
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!-- Required  显示通知栏 -->
+                <category android:name="bc.juhaohd.com" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false" />
+
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
+        <receiver
+            android:name=".service.MyReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="bc.juhaohd.com" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="481955fe32b0f25fd477e2fd" />
+        <!-- </>值来自开发者平台取得的AppKey -->
+
+        <activity
+            android:name=".ui.activity.AdWaitActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.HomeShowNewActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.SearchActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme"></activity>
+        <activity
+            android:name=".ui.activity.MainNewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".ui.activity.CartActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme"></activity>
+        <activity
+            android:name=".ui.activity.buy.ConfirmOrderNewActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme" />
+        <activity android:name=".ui.activity.OrderPaySuccessActivity" />
+        <activity android:name=".ui.activity.OrderPayHomeActivity" />
+        <activity
+            android:name=".ui.activity.user.MyOrderNewActivity"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.UserAddrNewActivity"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.UserAddrAddNewActivity"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.UserLogNewActivity"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.UserLogAddNewActivity"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.CollectNewActivity"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.product.ProductDetailHDNewActivity"
+            android:theme="@style/NoTitleTheme"></activity>
+        <activity
+            android:name=".ui.activity.SettingNewActivity"
+            android:theme="@style/NoTitleTheme" />
+        <activity
+            android:name=".ui.activity.user.PerfectMydataNewActivity"
+            android:theme="@style/NoTitleTheme"></activity>
+        <activity
+            android:name=".ui.activity.MainNewForJuHaoActivity"
+            android:theme="@style/NoTitleTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+        <activity
+            android:name=".ui.activity.programme.MatchHomeActivity"
+            android:theme="@style/NoTitleTheme" />
+        <activity android:name=".ui.activity.TimeBuyActivity"></activity>
+        <activity android:name=".ui.activity.TestSwitchActivity"></activity>
+    </application>
+
+</manifest>

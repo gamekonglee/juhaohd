@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@color/white"
+              >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
+            <TextView
+                android:id="@+id/freight_rules_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center"
+                android:text="@string/freight_rules"
+                android:paddingRight="5dp"
+                android:visibility="gone"
+                android:textColor="@color/colorPrimaryRed"/>
+            <TextView
+                android:id="@+id/contact_service_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="@string/contact_service"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:textColor="@color/colorPrimaryRed"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <View
+        style="@style/view_style"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:gravity="center_vertical">
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_centerVertical="true"
+            android:button="@drawable/selector_checkbox"
+            android:textSize="36sp"
+            android:checked="false"
+            android:focusable="false"
+            android:text="" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_margin="20dp"
+            android:background="#22999999"
+            android:src="@drawable/bg_default"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/nameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+
+                android:text="名称"
+                android:singleLine="true"
+                android:textSize="36sp"
+                android:textColor="#444444"/>
+            <TextView
+                android:id="@+id/priceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/nameTv"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="$00"
+                android:textColor="#FF0000"
+                android:textSize="42sp" />
+
+            <TextView
+                android:id="@+id/SpecificationsTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/number_input_et"
+                android:text="规格: 1200*800*150H双色"
+                android:singleLine="true"
+                android:textSize="26sp"
+                android:textColor="#444444"
+                />
+
+
+            <include
+
+                android:id="@+id/number_input_et"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                layout="@layout/number_input_et"
+                android:layout_below="@+id/priceTv"
+                />
+            <ImageView
+                android:id="@+id/iv_delete"
+                android:src="@mipmap/icon_delete_cart"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="41dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/background_color"/>
+
+
+
+</LinearLayout>

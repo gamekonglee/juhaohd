@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="@dimen/xx300"
+    android:layout_marginRight="@dimen/xx300"
+    android:gravity="center"
+    android:background="@drawable/bg_corner_trans"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_num"
+        android:text="请选择支付方式"
+        android:maxLines="1"
+        android:gravity="center"
+        android:textColor="#333333"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginTop="10dp"
+        android:background="@color/divier_grey"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        />
+    <RadioGroup
+        android:id="@+id/rg_pay"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <RadioButton
+            android:id="@+id/rb_alipay"
+            android:text="支付宝支付"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:checked="true"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:id="@+id/rb_wx_pay"
+            android:text="微信支付"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            android:layout_marginLeft="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </RadioGroup>
+    <View
+        android:background="@color/divier_grey"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:text="取消"
+            android:gravity="center"
+            android:textColor="#666666"
+            android:textSize="24sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <View
+            android:background="@color/divier_grey"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_ensure"
+            android:background="@color/orange_theme"
+            android:text="确定"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>

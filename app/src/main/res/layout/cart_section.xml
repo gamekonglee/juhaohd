@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@drawable/bg_corner_white_full_10"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_corner_eeeeee_top"
+            android:layout_gravity="center_horizontal"
+            android:focusable ="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical">
+            <CheckBox
+                android:id="@+id/checkAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_centerVertical="true"
+                android:button="@drawable/selector_checkbox"
+                android:textSize="36sp"
+                android:maxHeight="10dp"
+                android:text="  选择全部商品" />
+
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/export_tv"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:text="导出清单"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:background="@color/yellow"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@android:color/white"
+                />
+
+            <LinearLayout
+                android:id="@+id/sum_ll"
+                android:visibility="gone"
+                android:layout_toRightOf="@id/checkAll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/sumNameTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/fontColor2"
+                    android:textSize="22sp"
+                    android:text="合计:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="￥0.00"
+                    android:textSize="22sp"
+                    android:focusable="false"
+                    android:textColor="#F33F3F"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+        <include layout="@layout/common_error" />
+        <include
+            android:id="@+id/null_net"
+            layout="@layout/empty_page_no_wifi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+
+            />
+
+        <include
+            android:id="@+id/null_view"
+            layout="@layout/empty_page_no_recoder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+
+
+        <ScrollView
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="5dp">
+
+                <!--<ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />-->
+                <com.lib.common.hxp.view.ListViewForScrollView
+                    android:id="@+id/cart_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dividerHeight="1dp" />
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>

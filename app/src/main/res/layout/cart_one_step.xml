@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:visibility="visible"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingLeft="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="已选择"
+                android:textColor="#444444"
+                android:textSize="36sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_count"
+                android:text=" 0 "
+                android:textSize="36sp"
+                android:textColor="@color/orange_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="件商品"
+                android:textSize="36sp"
+                android:textColor="#444444"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:background="#dddddd"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="49dp"
+                android:text="商品总额 "
+                android:textColor="#444444"
+                android:textSize="36sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/totla_money_tv"
+                android:text="00.00"
+                android:textColor="#444444"
+                android:textSize="36sp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="49dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="42dp"
+                android:text="应付总额 "
+                android:textColor="#444444"
+                android:textSize="36sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/summoney_tv"
+                android:text="00.00"
+                android:textColor="@color/orange_theme"
+                android:textSize="36sp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="42dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/settle_tv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:text="去结算"
+            android:gravity="center"
+            android:textSize="42sp"
+            android:layout_marginTop="57dp"
+            android:background="@drawable/bg_corner_bottom_orange"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
