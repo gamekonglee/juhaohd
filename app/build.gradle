@@ -8,8 +8,8 @@ android {
         applicationId "bc.juhaohd.com"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 7
-        versionName "1.11"
+        versionCode 12
+        versionName "1.16"
         multiDexEnabled true
 
         ndk {
@@ -24,9 +24,6 @@ android {
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }
-
-
-
 
     buildTypes {
         release {

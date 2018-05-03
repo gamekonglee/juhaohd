@@ -31,10 +31,13 @@ import bc.juhaohd.com.cons.Constance;
 import bc.juhaohd.com.cons.NetWorkConst;
 import bc.juhaohd.com.controller.BaseController;
 import bc.juhaohd.com.listener.INetworkCallBack;
+import bc.juhaohd.com.listener.ITwoCodeListener;
 import bc.juhaohd.com.ui.activity.programme.ImageDetailActivity;
 import bc.juhaohd.com.ui.adapter.MatchItemAdapter;
 import bc.juhaohd.com.ui.adapter.ProgrammeDropMenuAdapter;
 import bc.juhaohd.com.ui.fragment.ProgrammeFragment;
+import bc.juhaohd.com.ui.view.popwindow.TwoCodeSharePopWindow;
+import bc.juhaohd.com.utils.MyShare;
 import bc.juhaohd.com.utils.ShareUtil;
 import bc.juhaohd.com.utils.UIUtils;
 import bocang.json.JSONArray;
@@ -368,7 +371,7 @@ public class ProgrammeController extends BaseController implements INetworkCallB
                 @Override
                 public void onClick(View v) {
                     new AlertView(null, null, "取消", null,
-                            new String[]{"复制链接", "分享图片", "分享链接"},
+                            new String[]{"复制链接", "分享二维码", "分享链接"},
                             mView.getContext(), AlertView.Style.ActionSheet, new OnItemClickListener() {
                         @Override
                         public void onItemClick(Object o, int position) {
@@ -381,7 +384,19 @@ public class ProgrammeController extends BaseController implements INetworkCallB
                                     break;
                                 case 1:
                                     String title1 = "来自 " + jsonObject.getString(Constance.name) + " 方案的分享";
-                                    ShareUtil.showShare01(mView.getActivity(), title1, "1", path);
+//                                    ShareUtil.showShare01(mView.getActivity(), title1, "1", path);
+                                    final String fapath = NetWorkConst.SHARE_FANGAN + jsonObject.getInt(Constance.id);
+
+                                    String titlet = "来自 " + UIUtils.getString(R.string.app_name) + " 配灯的分享";
+                                    MyShare.get(mView.getActivity()).putString(Constance.sharePath, fapath);
+                                    MyShare.get(mView.getActivity()).putString(Constance.shareRemark, titlet);
+                                    TwoCodeSharePopWindow popWindow = new TwoCodeSharePopWindow(mView.getActivity(), mView.getActivity());
+                                    popWindow.onShow(mView.getView());
+                                    popWindow.setListener(new ITwoCodeListener() {
+                                        @Override
+                                        public void onTwoCodeChanged(String path) {
+                                        }
+                                    });
                                     break;
                                 case 2:
                                     String title = "来自 " + jsonObject.getString(Constance.name) + " 方案的分享";

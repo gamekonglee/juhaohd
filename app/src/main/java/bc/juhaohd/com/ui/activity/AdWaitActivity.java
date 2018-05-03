@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import com.android.volley.misc.Utils;
 import com.baiiu.filter.util.UIUtil;
 import com.bigkoo.convenientbanner.CBLoopViewPager;
+import com.pgyersdk.crash.PgyCrashManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,36 +42,45 @@ public class AdWaitActivity extends Activity {
         MyPagerAdapter myPagerAdapter=new MyPagerAdapter();
         imageViews = new ArrayList<>();
         bitmaps = new ArrayList<>();
-        for(int i=0;i<4;i++){
-            ImageView imageView=new ImageView(this);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-//            bitmap = ImageUtil.getBitmapById(AdWaitActivity.this, R.mipmap.ad_1);
-            ;
+        try {
 
-            switch (i){
-                case 0:
-                    bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_1)));
-                    break;
-                case 1:
-                    bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_2)));
-                    break;
-                case 2:
-                    bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_3)));
-                    break;
-                case 3:
-                    bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_4)));
-                    break;
-            }
+
+            for (int i = 0; i < 4; i++) {
+                ImageView imageView = new ImageView(this);
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//            bitmap = ImageUtil.getBitmapById(AdWaitActivity.this, R.mipmap.ad_1);
+                ;
+
+                switch (i) {
+                    case 0:
+                        bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this, R.mipmap.ad_1)));
+                        break;
+                    case 1:
+                        bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this, R.mipmap.ad_2)));
+                        break;
+                    case 2:
+                        bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this, R.mipmap.ad_3)));
+                        break;
+                    case 3:
+                        bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this, R.mipmap.ad_4)));
+                        break;
+//                    case 4:
+//                        bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this, R.mipmap.ad_5)));
+//                        break;
+                }
 
 //            imageView.setImageBitmap(bitmaps.get(i));
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AdWaitActivity.this.finish();
-                }
-            });
-            imageViews.add(imageView);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AdWaitActivity.this.finish();
+                    }
+                });
+                imageViews.add(imageView);
 
+            }
+        }catch (Exception e){
+            PgyCrashManager.reportCaughtException(this,e);
         }
         vp.setAdapter(myPagerAdapter);
 
@@ -101,20 +111,20 @@ public class AdWaitActivity extends Activity {
         public Object instantiateItem(ViewGroup container, int position) {
             ImageView v=imageViews.get(position);
 
-            switch (position){
-                case 0:
-                    bitmaps.set(0,ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_1)));
-                    break;
-                case 1:
-                    bitmaps.set(1,ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_2)));
-                    break;
-                case 2:
-                    bitmaps.set(2,ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_3)));
-                    break;
-//                case 3:
-//                    bitmap =ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_4);
+//            switch (position){
+//                case 0:
+//                    bitmaps.set(0,ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_1)));
 //                    break;
-            }
+//                case 1:
+//                    bitmaps.set(1,ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_2)));
+//                    break;
+//                case 2:
+//                    bitmaps.set(2,ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_3)));
+//                    break;
+////                case 3:
+////                    bitmap =ImageUtil.getBitmapById(AdWaitActivity.this,R.mipmap.ad_4);
+////                    break;
+//            }
             v.setImageBitmap(bitmaps.get(position));
             ViewGroup parent = (ViewGroup) v.getParent();
             //Log.i("ViewPaperAdapter", parent.toString());
@@ -127,7 +137,7 @@ public class AdWaitActivity extends Activity {
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            bitmaps.set(position,null);
+//            bitmaps.set(position,null);
             container.removeView((View) object);
         }
     }

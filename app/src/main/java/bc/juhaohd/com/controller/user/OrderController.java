@@ -634,6 +634,7 @@ public class OrderController extends BaseController implements PullToRefreshLayo
             holder.total_tv.setText(str);
 
             if(array.size()>1){
+                holder.id_gallery.removeAllViews();
                 for(int x=0;x<array.size();x++){
                     com.alibaba.fastjson.JSONObject object=array.getJSONObject(x);
                     ImageView img=new ImageView(mView.getActivity());

@@ -222,12 +222,39 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        if(mUserObject==null)
+//        {
+//            tv_server.setText("");
+//            return;
+//        }
+//        if (!AppUtils.isEmpty(mUserObject.getString("parent_id"))) {
+//            if (mUserObject.getInt("parent_id") == 0) {
+//                MyShare.get(getActivity()).putInt(Constance.USERCODEID, mUserObject.getInt("id"));
+//            } else {
+//                MyShare.get(getActivity()).putInt(Constance.USERCODEID, mUserObject.getInt("parent_id"));
+//            }
+//
+//        }
+//        if (!AppUtils.isEmpty(mUserObject.getString("parent_name"))) {
+//            MyShare.get(getActivity()).putString(Constance.USERCODE, mUserObject.getString("parent_name"));
+//        } else {
+//            MyShare.get(getActivity()).putString(Constance.USERCODE, mUserObject.getString("nickname"));
+//        }
+//
+//        String user_name = MyShare.get(getActivity()).getString(Constance.USERCODE);
+//        String name = mUserObject.getString(Constance.username);
+//        if (AppUtils.isEmpty(user_name)) {
+//
+//            tv_server.setText(name);
+//        } else {
+//
+//            tv_server.setText(user_name);
+//        }
+//
+//    }
     @Subscribe (threadMode = ThreadMode.MAIN, sticky = true)
     public void onEventA(Message msg) {
 //        LogUtils.logE("event bus",msg.getMsg()+"");
@@ -238,7 +265,7 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
         }
         getNews();
 
-        if(mUserObject==null)
+        if(mUserObject==null||mUserObject.getInt(Constance.level)==2)
         {
             tv_server.setText("");
             tv_code.setText("");
@@ -250,7 +277,6 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
             } else {
                 MyShare.get(getActivity()).putInt(Constance.USERCODEID, mUserObject.getInt("parent_id"));
             }
-
         }
         if (!AppUtils.isEmpty(mUserObject.getString("parent_name"))) {
             MyShare.get(getActivity()).putString(Constance.USERCODE, mUserObject.getString("parent_name"));
@@ -305,7 +331,6 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
             VideoPopWindow popWindow = new VideoPopWindow(getActivity().getBaseContext(), getActivity());
             popWindow.onShow(((HomeShowNewActivity)getActivity()).main_rl);
             break;
-
     }
     }
 

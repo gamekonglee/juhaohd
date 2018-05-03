@@ -30,6 +30,7 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.pgyersdk.crash.PgyCrashManager;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -283,7 +284,8 @@ public class DiyController extends BaseController implements INetworkCallBack, P
         params.put("style", mStyle);
         params.put("space", mSpace);
         params.put("parent_id", id + "");
-
+        Exception e=new Exception("name:"+mTitle+",goods_id:"+goodsid.toString()+",content:"+mContent+",style:"+mStyle+",space:"+mSpace+",parent_id:"+id+"");
+        PgyCrashManager.reportCaughtException(mView,e);
         final String imageName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()) + ".png";
         new Thread(new Runnable() { //开启线程上传文件
             @Override

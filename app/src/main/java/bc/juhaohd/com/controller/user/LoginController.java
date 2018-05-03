@@ -3,7 +3,10 @@ package bc.juhaohd.com.controller.user;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Message;
+import android.os.SystemClock;
+import android.provider.Settings;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -11,14 +14,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import bc.juhaohd.com.R;
 import bc.juhaohd.com.cons.Constance;
 import bc.juhaohd.com.cons.NetWorkConst;
 import bc.juhaohd.com.controller.BaseController;
 import bc.juhaohd.com.listener.INetworkCallBack;
+import bc.juhaohd.com.listener.INetworkCallBack02;
 import bc.juhaohd.com.ui.activity.HomeShowActivity;
 import bc.juhaohd.com.ui.activity.HomeShowNewActivity;
+import bc.juhaohd.com.ui.activity.IssueApplication;
 import bc.juhaohd.com.ui.activity.user.LoginActivity;
 import bc.juhaohd.com.ui.activity.user.Regiest01Activity;
 import bc.juhaohd.com.ui.activity.user.UpdatePasswordActivity;
@@ -50,18 +57,57 @@ public class LoginController extends BaseController implements INetworkCallBack 
     private int mType = 0;
     private Button login_bt;
     private String mCode;
+    private String android_id;
+    private WebView webView;
+    private Timer timer;
 
 
     public LoginController(LoginActivity v) {
         mView = v;
         initView();
         InitViewData();
+
     }
 
     private void InitViewData() {
         if (mType == 0) {
             phone_et.setText(MyShare.get(mView).getString(Constance.USERNAME));
         }
+        android_id = "scalelogin"+ Settings.System.getString(IssueApplication.getcontext().getContentResolver(), Settings.System.ANDROID_ID)+ SystemClock.currentThreadTimeMillis();
+        webView.loadUrl(NetWorkConst.TWO_CODE+ android_id);
+        timer = new Timer();
+        startTimer();
+    }
+
+    private void startTimer() {
+        TimerTask timerTask=new TimerTask() {
+            @Override
+            public void run() {
+                mNetWork.sendTokenQuery(android_id, new INetworkCallBack02() {
+                    @Override
+                    public void onSuccessListener(String requestCode, com.alibaba.fastjson.JSONObject ans) {
+//                        MyToast.show(mView,"success:"+ans.toString());
+                        if(ans!=null&&ans.getString(Constance.TOKEN)!=null){
+                            timer.cancel();
+                            if (mType == 0) {
+                                MyShare.get(mView).putString(Constance.USERNAME, mCode);
+                            }
+                            String token = ans.getString(Constance.TOKEN);
+                            MyShare.get(mView).putString(Constance.TOKEN, token);
+//                HomeShowNewActivity.mFragmentState=6;
+                            IntentUtil.startActivity(mView, HomeShowNewActivity.class, true);
+//                            SendTokenAdd();
+                        }
+                    }
+                    @Override
+                    public void onFailureListener(String requestCode, com.alibaba.fastjson.JSONObject ans) {
+                        if(ans==null)return;
+//                        MyToast.show(mView,"failure:"+ans.toString());
+                    }
+                });
+            }
+        };
+        timer.schedule(timerTask,3000,3000);
     }
 
 
@@ -76,6 +122,7 @@ public class LoginController extends BaseController implements INetworkCallBack 
         type02Tv = (TextView) mView.findViewById(R.id.type02Tv);
         typeTv = (TextView) mView.findViewById(R.id.typeTv);
         login_bt = (Button) mView.findViewById(R.id.login_bt);
+        webView=mView.findViewById(R.id.webView);
     }
 
     @Override

@@ -102,7 +102,7 @@ public void onItemClick(AdapterView<?> parent, View view, int position, long id)
         Intent intent = new Intent(mView, ProductDetailHDNewActivity.class);
         int productId = itemObject.getInt(Constance.id);
 //        intent.putExtra(Constance.is_xiangou,true);
-        intent.putExtra(Constance.product, productId);
+        intent.putExtra(Constance.product, ""+productId);
         mView.startActivity(intent);
         }
         });

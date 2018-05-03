@@ -675,4 +675,10 @@ public class Network {
         params.add("code","wxpay.dmf");
         sendRequest02(params, NetWorkConst.TWO_CODE_Pay, 0, iNetworkCallBack);
     }
+
+    public void sendTokenQuery(String android_id, INetworkCallBack02 iNetworkCallBack02) {
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.add("sid",android_id);
+        sendRequest02(jsonObject,NetWorkConst.TOKEN_QUERY,0,iNetworkCallBack02);
+    }
 }

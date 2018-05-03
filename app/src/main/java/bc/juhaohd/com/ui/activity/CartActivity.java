@@ -44,7 +44,7 @@ public class CartActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initController() {
-        mController = new CartController(this);
+        mController = new CartController (this);
     }
 
     @Override

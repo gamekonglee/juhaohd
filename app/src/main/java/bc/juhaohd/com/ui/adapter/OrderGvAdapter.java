@@ -105,11 +105,16 @@ public class OrderGvAdapter extends BaseAdapter {
         holder.goods_summoney_tv.setText("￥"+object.getString( Constance.product_price ));
         holder.name_tv.setText(object.getJSONObject(Constance.product).getString(Constance.name));
         String property=object.getJSONObject(Constance.product).getString(Constance.property);
-        double original_price= Double.parseDouble(object.getString(Constance.original_price));
+        double original_price;
+        try{
+            original_price= Double.parseDouble(object.getString(Constance.original_price));
+        }catch (Exception e){
+            original_price= Double.parseDouble(object.getString(Constance.product_price));
+        }
         double product_price= Double.parseDouble(object.getString( Constance.product_price ));
 
         holder.tv_cut_price.setText("已优惠：￥"+(original_price-product_price)*Integer.parseInt(num));
-        holder.tv_mark_price.setText("市场价：￥"+Double.parseDouble(object.getString(Constance.original_price))*Integer.parseInt(num));
+        holder.tv_mark_price.setText("市场价：￥"+original_price*Integer.parseInt(num));
 //        holder.rl_webview.setVisibility(View.GONE);
 //        if(mState==0){
 //            if(position==0){

@@ -1,10 +1,13 @@
 package bc.juhaohd.com.ui.activity.user;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.transition.Transition;
 import android.view.View;
@@ -30,7 +33,7 @@ import bocang.utils.AppUtils;
  * @date : 2017/5/9 10:22
  * @description :公司视频
  */
-public class BrandPlayActivity extends BaseActivity {
+public class BrandPlayActivity extends Activity {
     public JSONObject mData;
     private BrandPlayController mController;
     private LandLayoutVideo play;
@@ -42,15 +45,21 @@ public class BrandPlayActivity extends BaseActivity {
     String path = "http://7xt9qi.com1.z0.glb.clouddn.com/juhaogongcheng1";
     public String name="";
 
-    @Override
-    protected void InitDataView() {
-        startPlayVideo(path);
-    }
+//    @Override
+//    protected void InitDataView() {
+//        startPlayVideo(path);
+//    }
+
 
     @Override
-    protected void onStart() {
-        super.onStart();
-//        if(countDownTimer!=null)countDownTimer.cancel();
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_play);
+        play = (LandLayoutVideo) findViewById(R.id.play);
+        Intent intent=getIntent();
+        path=intent.getStringExtra(Constance.url);
+        startPlayVideo(path);
+        mController=new BrandPlayController(this);
     }
 
     /**
@@ -148,7 +157,7 @@ public class BrandPlayActivity extends BaseActivity {
         super.onDestroy();
         if (orientationUtils != null)
             orientationUtils.releaseListener();
-        startAD();
+//        startAD();
         IssueApplication.noAd=false;
     }
 
@@ -180,26 +189,26 @@ public class BrandPlayActivity extends BaseActivity {
             }, 500);
         }
     }
-
-    @Override
-    protected void initController() {
-        mController=new BrandPlayController(this);
-    }
-
-    @Override
-    protected void initView() {
-        setContentView(R.layout.activity_play);
-        play = (LandLayoutVideo) findViewById(R.id.play);
-    }
-
-    @Override
-    protected void initData() {
-        Intent intent=getIntent();
-        path=intent.getStringExtra(Constance.url);
-    }
-
-    @Override
-    protected void onViewClick(View v) {
-
-    }
+//
+//    @Override
+//    protected void initController() {
+//        mController=new BrandPlayController(this);
+//    }
+//
+//    @Override
+//    protected void initView() {
+//        setContentView(R.layout.activity_play);
+//        play = (LandLayoutVideo) findViewById(R.id.play);
+//    }
+//
+//    @Override
+//    protected void initData() {
+//        Intent intent=getIntent();
+//        path=intent.getStringExtra(Constance.url);
+//    }
+//
+//    @Override
+//    protected void onViewClick(View v) {
+//
+//    }
 }

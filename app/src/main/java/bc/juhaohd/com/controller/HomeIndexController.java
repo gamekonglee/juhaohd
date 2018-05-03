@@ -41,7 +41,7 @@ public class HomeIndexController extends BaseController implements INetworkCallB
     public HomeIndexController(HomeIndexFragment fragment){
         mView = fragment;
         initView();
-        initData();
+//        initData();
 
 
     }

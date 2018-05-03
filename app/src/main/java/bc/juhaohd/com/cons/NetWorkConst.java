@@ -1,5 +1,8 @@
 package bc.juhaohd.com.cons;
 
+import bc.juhaohd.com.R;
+import bc.juhaohd.com.ui.activity.IssueApplication;
+
 /**
  * @author Jun
  * @time 2017/1/7  21:46
@@ -24,6 +27,8 @@ public class NetWorkConst {
     public static final String TIME_BUY_BANNER_HOST = "http://www."+APPNAME+".com/data/afficheimg/";
 
     public static final String GROUPLIST = API_HOST + "/v2/ecapi.goods.grouplist";
+    public static final String TWO_CODE = "http://pan.baidu.com/share/qrcode?w=300&h=300&url=";
+    public static final String TOKEN_QUERY = API_HOST + "/v2/ecapi.user.hd.query";
 
     public static String APK_NAME="juhaoHD_v";
 
@@ -41,7 +46,8 @@ public class NetWorkConst {
     public final static  String WEB_PRODUCT_CARD="http://browser.edsmall.cn/webimg?url="+SCENE_HOST+"phone_goods_show.php?id=";
 
     //分享产品
-    public final static String SHAREPRODUCT=SCENE_HOST+"goods.php?id=";
+//    public final static String SHAREPRODUCT=SCENE_HOST+"goods.php?id=";
+    public final static String SHAREPRODUCT=SCENE_HOST+"/mobile/index.php?m=default&c=goods&a=index&id=";
 
     //邀请码用户信息
     public static final String USER_SHOP_ADDRESS=API_HOST+"/v2/ecapi.shop.address.";

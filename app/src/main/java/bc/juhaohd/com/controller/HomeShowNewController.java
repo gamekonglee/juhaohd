@@ -232,7 +232,7 @@ public class HomeShowNewController extends BaseController implements INetworkCal
 //                    mView.operator_tv.setText(mUserObject.getString("nickname"));
                 }
 
-
+                EventBus.getDefault().postSticky(new bc.juhaohd.com.bean.Message(0,"yes,that's all right~!"));
                 String yaoqing = mUserObject.getString(Constance.invite_code);
 //                if (!AppUtils.isEmpty(yaoqing))
 //                    mView.two_code_tv.setText("注册邀请码:" + yaoqing);

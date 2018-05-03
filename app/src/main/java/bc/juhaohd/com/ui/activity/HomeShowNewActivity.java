@@ -128,6 +128,9 @@ public class HomeShowNewActivity extends BaseActivity {
             refresUI();
         }
         mHomeShowController.sendUser();
+        if(!IssueApplication.noAd){
+            countDownTimer.start();
+        }
 //        Toast.makeText(HomeShowNewActivity.this, "oncreate", Toast.LENGTH_SHORT).show();
     }
 

@@ -23,13 +23,10 @@ public class LoginActivity extends BaseActivity {
     protected void InitDataView() {
 
     }
-
     @Override
     protected void initController() {
         mController=new LoginController(this);
-
-
-//        mController.phone_et.setText("佛山铂仓");
+//        mController.phone_et.setText("18566097950");
 //        mController.pwd_et.setText("123456");
 //        mController.sendLogin();
     }

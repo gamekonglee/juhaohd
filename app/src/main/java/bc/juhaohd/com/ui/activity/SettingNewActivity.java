@@ -60,6 +60,7 @@ public class SettingNewActivity extends BaseActivity {
                     @Override
                     public void positive() {
                         MyShare.get(SettingNewActivity.this).putString(Constance.TOKEN, "");
+                        MyShare.get(SettingNewActivity.this).putString(Constance.USERCODE,"");
                         MyShare.get(SettingNewActivity.this).clear();
                         IssueApplication.mUserObject=null;
 //                        ((HomeShowNewActivity).clear();

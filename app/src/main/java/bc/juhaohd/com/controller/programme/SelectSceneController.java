@@ -235,9 +235,9 @@ public class SelectSceneController extends BaseController implements INetworkCal
 
         SceensNames[titlePos] = sceneAllAttrs.getJSONObject(titlePos).getJSONArray(Constance.attrVal).getString(itemPos);
 
-        keyword = "[\"" + SceensNames[0] + "\",\"" + SceensNames[1] + "\"]";
-        if (AppUtils.isEmpty(keyword))
-            return;
+//        keyword = "[\"" + SceensNames[0] + "\",\"" + SceensNames[1] + "\"]";
+        keyword = "[\"" +SceensNames[titlePos] + "\"]";
+
         pd.setVisibility(View.VISIBLE);
         sendSceneList(1);
 
