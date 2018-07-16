@@ -75,21 +75,46 @@
             style="@style/tv_home_text" />
         </RelativeLayout>
     </LinearLayout>
-    <RelativeLayout
+
+
+    <LinearLayout
         android:layout_marginLeft="20dp"
-        android:layout_width="300dp"
-        android:layout_height="620dp">
-    <ImageView
-        android:id="@+id/iv_360"
-        android:layout_width="300dp"
-        android:layout_height="620dp"/>
-    <TextView
-        android:id="@+id/tv_360"
-        android:text="360展厅"
-        style="@style/tv_home_text"
-        android:layout_width="300dp"
-        android:layout_height="620dp" />
-    </RelativeLayout>
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+            <ImageView
+                android:id="@+id/iv_360"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+            <TextView
+                android:id="@+id/tv_360"
+                android:text="360展厅"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                style="@style/tv_home_text" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+            <ImageView
+                android:id="@+id/iv_taocan"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+            <TextView
+                android:id="@+id/tv_taocan"
+                android:text="套餐秒杀"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                style="@style/tv_home_text" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
     <LinearLayout
         android:layout_marginLeft="20dp"
         android:orientation="vertical"

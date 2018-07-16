@@ -25,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.exoplayer.C;
 import com.google.gson.Gson;
 import com.lib.common.hxp.view.PullToRefreshLayout;
 import com.lib.common.hxp.view.PullableGridView;
@@ -37,6 +38,7 @@ import bc.juhaohd.com.adapter.BaseAdapterHelper;
 import bc.juhaohd.com.adapter.QuickAdapter;
 import bc.juhaohd.com.bean.AppVersion;
 import bc.juhaohd.com.bean.AttrBean;
+import bc.juhaohd.com.bean.AttrList;
 import bc.juhaohd.com.bean.GoodsBean;
 import bc.juhaohd.com.bean.GroupBuy;
 import bc.juhaohd.com.cons.Constance;
@@ -80,7 +82,8 @@ public class MainNewController extends BaseController implements INetworkCallBac
     private PullableGridView gridView;
     private QuickAdapter typeAdapter;
     private QuickAdapter goodsAdapter;
-    private List<AttrBean.Attr_list> attrBeen;
+    private List<AttrList> attrBeen;
+    private List<AttrList> attrBeenchild;
     private List<GoodsBean> goodsBeen;
     public int page;
     private ProgressBar pd;
@@ -98,6 +101,7 @@ public class MainNewController extends BaseController implements INetworkCallBac
     private LinearLayout ll_filter;
     private boolean[][] filterArray;
     private String current_three_filter;
+    private QuickAdapter typeChildAdapter;
 
     public MainNewController(MainNewActivity v) {
         mView = v;
@@ -121,6 +125,47 @@ public class MainNewController extends BaseController implements INetworkCallBac
             tv_current_select.setText(mView.filter_type);
         }
         sendAttrList();
+//        mNetWork.sendGoodsType(1, 20, null, null, new INetworkCallBack() {
+//            @Override
+//            public void onSuccessListener(String requestCode, JSONObject ans) {
+//                String str=ans.toString();
+//                LogUtils.logE("cate",str);
+//                JSONArray jsonArray=ans.getJSONArray(Constance.categories);
+//                attrBeen=new ArrayList<>();
+//                for (int i=0;i<jsonArray.length();i++){
+//                    if(jsonArray.getJSONObject(i).getString(Constance.name).equals("类型")){
+//                        jsonArray=jsonArray.getJSONObject(i).getJSONArray(Constance.categories);
+//                        break;
+//                    }
+//                }
+//                for (int i=0;i<jsonArray.length();i++){
+//                    AttrList attrList=new AttrList();
+//                    attrList.setId(jsonArray.getJSONObject(i).getInt(Constance.id));
+//                    attrList.setAttr_value(jsonArray.getJSONObject(i).getString(Constance.name));
+//                    attrList.setLevel(1);
+//                    attrList.setPid(jsonArray.getJSONObject(i).getInt(Constance.id));
+//                    attrBeen.add(attrList);
+//                    JSONArray temp=jsonArray.getJSONObject(i).getJSONArray(Constance.categories);
+//                    if(temp!=null&&temp.length()>0){
+//                        for(int j=0;j<temp.length();j++){
+//                            AttrList attrListTemp=new AttrList();
+//                            attrListTemp.setId(temp.getJSONObject(j).getInt(Constance.id));
+//                            attrListTemp.setAttr_value(temp.getJSONObject(j).getString(Constance.name));
+//                            attrListTemp.setLevel(2);
+//                            attrListTemp.setPid(attrList.getId());
+//                            attrBeen.add(attrListTemp);
+//                        }
+//
+//                    }
+//                }
+//            typeAdapter.replaceAll(attrBeen);
+//            }
+//
+//            @Override
+//            public void onFailureListener(String requestCode, JSONObject ans) {
+//
+//            }
+//        });
 //        selectProduct(page, "20", null, null, null);
     }
     public void sendAttrList() {
@@ -132,7 +177,6 @@ public class MainNewController extends BaseController implements INetworkCallBac
         lv_type = (ListView) mView.findViewById(R.id.lv_type);
         tv_current_select = (TextView) mView.findViewById(R.id.tv_current_select);
         tv_none_sort = (TextView) mView.findViewById(R.id.tv_none_sort);
-
         rl_search = (RelativeLayout) mView.findViewById(R.id.rl_search);
         et_search = (EditText) mView.findViewById(R.id.et_search);
         et_search.setText(mView.keyword);
@@ -155,19 +199,85 @@ public class MainNewController extends BaseController implements INetworkCallBac
         attrAllBean = new ArrayList<>();
         attrBeen = new ArrayList<>();
         goodsBeen = new ArrayList<>();
+        attrBeenchild=new ArrayList<>();
         currentPosition=0;
         currentTitlePosition = 0;
 //        unMessageReadTv = (TextView) mView.findViewById(R.id.unMessageReadTv);
-        typeAdapter = new QuickAdapter<AttrBean.Attr_list>(mView, R.layout.item_attr){
+        typeAdapter = new QuickAdapter<AttrList>(mView, R.layout.item_attr){
 
             @Override
-            protected void convert(BaseAdapterHelper helper, AttrBean.Attr_list item) {
+            protected void convert(BaseAdapterHelper helper, AttrList item) {
             helper.setText(R.id.tv_attr,""+item.getAttr_value());
-                if(helper.getPosition()==currentPosition){
-                    helper.setBackgroundColor(R.id.ll_bg,mView.getResources().getColor(R.color.bg_item_selected));
-                }else {
-                    helper.setBackgroundColor(R.id.ll_bg,mView.getResources().getColor(R.color.bg_item_normal));
+            ListView lv_attr_child=helper.getView(R.id.lv_attr_child);
+            lv_attr_child.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    tv_current_select.setText(""+attrBeenchild.get(position).getAttr_value());
+//                mView.category=attrBeen.get(position).getAttr_value();
+                    if(null==attrAllBean||attrAllBean.size()<=0){
+                        sendAttrList();
+                        return;
+                    }
+                    String filter = attrBeenchild.get(position).getId()+"";
+//                    for (int i = 0; i < index + 1; i++) {
+//                        if (i == index) {
+//                            filter += attrAllBean.get(currentTitlePosition).getAttr_list().get(position).getId();
+//                        } else {
+//                            filter += "0.";
+//                        }
+//                    }
+                    mView.filter_attr = filter;
+                    if (AppUtils.isEmpty(mView.filter_attr))
+                        return;
+                    pd.setVisibility(View.VISIBLE);
+                    page=1;
+                    isScrollToTop=true;
+                    selectProduct(page, "20", null, null, null);
                 }
+            });
+            ImageView iv=helper.getView(R.id.iv_arrow);
+                if(helper.getPosition()==currentPosition){
+                    lv_attr_child.setAdapter(typeChildAdapter);
+                    lv_attr_child.setVisibility(View.VISIBLE);
+                    typeChildAdapter.replaceAll(attrBeenchild);
+                    helper.setBackgroundColor(R.id.ll_bg,mView.getResources().getColor(R.color.bg_item_selected));
+                    iv.setImageResource(R.mipmap.icon_xl);
+                    RelativeLayout.LayoutParams params= (RelativeLayout.LayoutParams) iv.getLayoutParams();
+                    params.width=UIUtils.dip2PX(16);
+                    params.height=UIUtils.dip2PX(32);
+                    iv.setLayoutParams(params);
+//                    if(attrBeen.get(currentPosition).getLevel()==1){
+//                        if(item.getPid()==attrBeen.get(currentPosition).getId()){
+//                            view.setVisibility(View.VISIBLE);
+//                        }else {
+//                            view.setVisibility(View.GONE);
+//                        }
+//                    }
+                }else {
+                    lv_attr_child.setAdapter(null);
+                    lv_attr_child.setVisibility(View.GONE);
+                    helper.setBackgroundColor(R.id.ll_bg,mView.getResources().getColor(R.color.bg_item_normal));
+                    iv.setImageResource(R.mipmap.icon_jt);
+                    RelativeLayout.LayoutParams params= (RelativeLayout.LayoutParams) iv.getLayoutParams();
+                    params.width=UIUtils.dip2PX(32);
+                    params.height=UIUtils.dip2PX(16);
+                    iv.setLayoutParams(params);
+                }
+                UIUtils.initListViewHeight(lv_attr_child);
+            }
+        };
+        typeChildAdapter = new QuickAdapter<AttrList>(mView, R.layout.item_attr_child){
+
+            @Override
+            protected void convert(BaseAdapterHelper helper, AttrList item) {
+                helper.setText(R.id.tv_attr,""+item.getAttr_value());
+//                if(helper.getPosition()==currentPosition){
+//                    helper.setBackgroundColor(R.id.ll_bg,mView.getResources().getColor(R.color.bg_item_selected));
+//                }else {
+//
+//                }
+//                helper.setBackgroundColor(R.id.ll_bg,mView.getResources().getColor(R.color.bg_item_normal));
+
             }
         };
         goodsAdapter = new QuickAdapter<GoodsBean>(mView, R.layout.item_gridview_goodes){
@@ -238,28 +348,58 @@ public class MainNewController extends BaseController implements INetworkCallBac
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 currentPosition = position;
-                typeAdapter.notifyDataSetChanged();
-                tv_current_select.setText(""+attrBeen.get(position).getAttr_value());
-//                mView.category=attrBeen.get(position).getAttr_value();
-                if(null==attrAllBean||attrAllBean.size()<=0){
-                    sendAttrList();
-                    return;
-                }
-                String filter = "";
-                for (int i = 0; i < index + 1; i++) {
-                    if (i == index) {
-                        filter += attrAllBean.get(currentTitlePosition).getAttr_list().get(position).getId();
-                    } else {
-                        filter += "0.";
+                AttrList attrList=attrBeen.get(position);
+                if(attrList.getId()==229||attrList.getId()==197||attrList.getId()==228||attrList.getId()==162||attrList.getId()==142||attrList.getId()==196){
+                    attrBeenchild=new ArrayList<>();
+                    mNetWork.sendGoodsType(1, 20, attrBeen.get(position).getId() + "", null, new INetworkCallBack() {
+                        @Override
+                        public void onSuccessListener(String requestCode, JSONObject ans) {
+                                JSONArray jsonArray=ans.getJSONArray(Constance.categories);
+                                    for (int i=1;i<jsonArray.length();i++){
+                            AttrList attrList=new AttrList();
+                            attrList.setId(jsonArray.getJSONObject(i).getInt(Constance.id));
+                            attrList.setAttr_value(jsonArray.getJSONObject(i).getString(Constance.name));
+                            attrList.setLevel(2);
+                            attrList.setPid(jsonArray.getJSONObject(i).getInt(Constance.id));
+                            attrBeenchild.add(attrList);
+
                     }
+                    typeAdapter.notifyDataSetChanged();
+//                            UIUtils.initListViewHeight(lv_type);
+
+                        }
+
+                        @Override
+                        public void onFailureListener(String requestCode, JSONObject ans) {
+
+                        }
+                    });
+                }else {
+
+                    typeAdapter.notifyDataSetChanged();
+                    tv_current_select.setText(""+attrBeen.get(position).getAttr_value());
+//                mView.category=attrBeen.get(position).getAttr_value();
+                    if(null==attrAllBean||attrAllBean.size()<=0){
+                        sendAttrList();
+                        return;
+                    }
+                    String filter = "";
+                    for (int i = 0; i < index + 1; i++) {
+                        if (i == index) {
+                            filter += attrAllBean.get(currentTitlePosition).getAttr_list().get(position).getId();
+                        } else {
+                            filter += "0.";
+                        }
+                    }
+                    mView.filter_attr = filter;
+                    if (AppUtils.isEmpty(mView.filter_attr))
+                        return;
+                    pd.setVisibility(View.VISIBLE);
+                    page=1;
+                    isScrollToTop=true;
+                    selectProduct(page, "20", null, null, null);
                 }
-                mView.filter_attr = filter;
-                if (AppUtils.isEmpty(mView.filter_attr))
-                    return;
-                pd.setVisibility(View.VISIBLE);
-                page=1;
-                isScrollToTop=true;
-                selectProduct(page, "20", null, null, null);
+
             }
         });
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -386,22 +526,23 @@ public class MainNewController extends BaseController implements INetworkCallBac
 
                 break;
             case NetWorkConst.ATTRLIST:
+
                 JSONArray sceneAllAttrs = ans.getJSONArray(Constance.goods_attr_list);
                 if(mView.filter_attr_name.equals("类型")){
                     index=0;
                 }else if(mView.filter_attr_name.equals("空间")){
                     index=1;
                 }else if(mView.filter_attr_name.equals("风格")){
-                    index=4;
+                    index=3;
                 }
                 boolean hasFilterType=false;
                 for(int i=0;i<sceneAllAttrs.length();i++){
-                    if(sceneAllAttrs.getJSONObject(i).getInt(Constance.index)==index){
+                    if(sceneAllAttrs.getJSONObject(i).getString(Constance.filter_attr_name).equals(mView.filter_attr_name)){
                         currentTitlePosition=i;
                         JSONArray jsonArray=sceneAllAttrs.getJSONObject(i).getJSONArray(Constance.attr_list);
                         for(int j=0;j<jsonArray.length();j++){
 
-                            attrBeen.add(new Gson().fromJson(String.valueOf(jsonArray.getJSONObject(j)),AttrBean.Attr_list.class));
+                            attrBeen.add(new Gson().fromJson(String.valueOf(jsonArray.getJSONObject(j)),AttrList.class));
                             if(!TextUtils.isEmpty(mView.filter_type)&&currentTitlePosition==i
                                     &&attrBeen.get(attrBeen.size()-1).getAttr_value().contains(mView.filter_type)){
                                     currentPosition=j;
@@ -433,7 +574,7 @@ public class MainNewController extends BaseController implements INetworkCallBac
 
                 selectProduct(page, "20", null, null, null);
 
-
+                currentPosition=0;
                 typeAdapter.replaceAll(attrBeen);
                 attrAlladapter.replaceAll(attrAllBean);
                 break;

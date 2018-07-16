@@ -376,6 +376,7 @@
         <activity
             android:name=".ui.activity.AdWaitActivity"
             android:screenOrientation="landscape"
+            android:launchMode="singleTop"
             android:theme="@style/NoTitleTheme" />
         <activity
             android:name=".ui.activity.HomeShowNewActivity"
@@ -439,6 +440,12 @@
             android:theme="@style/NoTitleTheme" />
         <activity android:name=".ui.activity.TimeBuyActivity"></activity>
         <activity android:name=".ui.activity.TestSwitchActivity"></activity>
+        <activity android:name=".ui.activity.WebViewCpActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitleTheme"/>
+        <activity android:name=".ui.activity.TaoCanHomeActivity"/>
+        <activity android:name=".ui.activity.ArticleActivity"/>
+
     </application>
 
 </manifest>

@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -30,12 +32,14 @@ import bc.juhaohd.com.common.BaseActivity;
 import bc.juhaohd.com.common.BaseFragment;
 import bc.juhaohd.com.cons.Constance;
 import bc.juhaohd.com.controller.HomeIndexController;
+import bc.juhaohd.com.ui.activity.ArticleActivity;
 import bc.juhaohd.com.ui.activity.CartActivity;
 import bc.juhaohd.com.ui.activity.HomeShowNewActivity;
 import bc.juhaohd.com.ui.activity.IssueApplication;
 import bc.juhaohd.com.ui.activity.MainActivity;
 import bc.juhaohd.com.ui.activity.MainNewActivity;
 import bc.juhaohd.com.ui.activity.MainNewForJuHaoActivity;
+import bc.juhaohd.com.ui.activity.TaoCanHomeActivity;
 import bc.juhaohd.com.ui.activity.TestSwitchActivity;
 import bc.juhaohd.com.ui.activity.TimeBuyActivity;
 import bc.juhaohd.com.ui.activity.programme.DiyActivity;
@@ -87,6 +91,10 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
     private ImageView iv_match;
     private ImageView iv_360;
     private ImageView iv_code_qr;
+    private TextView tv_cantao;
+    private ImageView iv_caotan;
+    private Bitmap bitmap_taocan;
+    private TextView tv_more_news;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -126,6 +134,8 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
         iv_code = (ImageView) getView().findViewById(R.id.iv_code);
         tv_server = getView().findViewById(R.id.tv_server);
         textSwitcher_title = getView().findViewById(R.id.textSwitcher_title);
+        tv_cantao = getView().findViewById(R.id.tv_taocan);
+
         tv_code = getView().findViewById(R.id.tv_code);
         iv_audio = getView().findViewById(R.id.iv_audio);
         iv_juhao = getView().findViewById(R.id.iv_juhao);
@@ -135,6 +145,8 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
         iv_match = getView().findViewById(R.id.iv_suiyipei);
         iv_360 = getView().findViewById(R.id.iv_360);
         iv_code_qr = getView().findViewById(R.id.iv_code_qr);
+        iv_caotan = getView().findViewById(R.id.iv_taocan);
+        tv_more_news = getView().findViewById(R.id.tv_more_news);
 
         tv_juhao.setOnClickListener(this);
         tv_solution.setOnClickListener(this);
@@ -143,6 +155,8 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
         tv_360.setOnClickListener(this);
         tv_cart.setOnClickListener(this);
         tv_audio.setOnClickListener(this);
+        tv_cantao.setOnClickListener(this);
+        tv_more_news.setOnClickListener(this);
         bitmap_audio = UIUtils.readBitMap(getActivity(), R.mipmap.icon_audio);
         iv_audio.setImageBitmap(bitmap_audio);
 
@@ -167,7 +181,8 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
         bitmap_code_qr = UIUtils.readBitMap(getActivity(), R.mipmap.icon_code);
         iv_code_qr.setImageBitmap(bitmap_code_qr);
 
-
+        bitmap_taocan = UIUtils.readBitMap(getActivity(), R.mipmap.icon_taocan);
+        iv_caotan.setImageBitmap(bitmap_taocan);
     }
 
     @Override
@@ -191,6 +206,9 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                     tv.setGravity(Gravity.CENTER_VERTICAL);
                     tv.setTextColor(Color.WHITE);
+                    tv.setLines(1);
+                    tv.setEllipsize(TextUtils.TruncateAt.END);
+                    tv.setLayoutParams(new FrameLayout.LayoutParams(UIUtils.dip2PX(360), FrameLayout.LayoutParams.WRAP_CONTENT));
                     tv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -316,7 +334,9 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
             startActivity(new Intent(getActivity(), TimeBuyActivity.class));
             break;
         case R.id.tv_match:
+            if(!isToken()){
             startActivity(new Intent(getActivity(), DiyActivity.class));
+            }
             break;
         case R.id.tv_360:
             Intent mIntent = new Intent(getActivity(), WebActivity.class);
@@ -331,6 +351,12 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
             VideoPopWindow popWindow = new VideoPopWindow(getActivity().getBaseContext(), getActivity());
             popWindow.onShow(((HomeShowNewActivity)getActivity()).main_rl);
             break;
+            case R.id.tv_taocan:
+                startActivity(new Intent(getActivity(), TaoCanHomeActivity.class));
+                break;
+            case R.id.tv_more_news:
+                startActivity(new Intent(getActivity(), ArticleActivity.class));
+                break;
     }
     }
 
@@ -351,6 +377,7 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
         if(bitmap_code_qr!=null)bitmap_code_qr.recycle();
         if(bitmap_juhao!=null)bitmap_juhao.recycle();
         if(bitmap_solution!=null)bitmap_solution.recycle();
+        if(bitmap_taocan!=null)bitmap_taocan.recycle();
         bitmap_audio=null;
         bitmap_cart=null;
         bitmap_match=null;
@@ -359,6 +386,7 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
         bitmap_code_qr=null;
         bitmap_juhao=null;
         bitmap_solution=null;
+        bitmap_taocan=null;
         EventBus.getDefault().unregister(this);
     }
 }

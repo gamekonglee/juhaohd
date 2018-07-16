@@ -6,11 +6,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -157,6 +159,9 @@ public class TypeFragment extends BaseFragment implements View.OnClickListener {
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                     tv.setGravity(Gravity.CENTER_VERTICAL);
                     tv.setTextColor(Color.WHITE);
+                    tv.setLines(1);
+                    tv.setEllipsize(TextUtils.TruncateAt.END);
+                    tv.setLayoutParams(new FrameLayout.LayoutParams(UIUtils.dip2PX(360), FrameLayout.LayoutParams.WRAP_CONTENT));
                     tv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

@@ -137,6 +137,9 @@ public class MineNewFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
+        if(isToken()){
+            return;
+        }
         switch (v.getId()) {
             case R.id.tv_change:
             case R.id.head_cv://头像

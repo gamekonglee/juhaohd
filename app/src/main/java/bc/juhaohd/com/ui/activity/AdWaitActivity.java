@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.android.volley.misc.Utils;
@@ -37,8 +39,14 @@ public class AdWaitActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);// 隐藏标题
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
         setContentView(R.layout.activity_ad_wait);
         vp = (AutoScrollViewPager) findViewById(R.id.vp);
+
         MyPagerAdapter myPagerAdapter=new MyPagerAdapter();
         imageViews = new ArrayList<>();
         bitmaps = new ArrayList<>();
@@ -61,7 +69,7 @@ public class AdWaitActivity extends Activity {
                     case 2:
                         bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this, R.mipmap.ad_3)));
                         break;
-                    case 3:
+                     case 3:
                         bitmaps.add(ImageUtil.compressBgImage(ImageUtil.getBitmapById(AdWaitActivity.this, R.mipmap.ad_4)));
                         break;
 //                    case 4:

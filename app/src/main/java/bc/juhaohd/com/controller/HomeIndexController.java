@@ -88,7 +88,6 @@ public class HomeIndexController extends BaseController implements INetworkCallB
                 if (!AppUtils.isEmpty(yaoqing))
                     tv_code.setText("注册邀请码:" + yaoqing);
 
-
                 IssueApplication.mUserObject = mUserObject;
                 if (!AppUtils.isEmpty(mUserObject.getString("parent_id"))) {
                     if (mUserObject.getInt("parent_id") == 0) {

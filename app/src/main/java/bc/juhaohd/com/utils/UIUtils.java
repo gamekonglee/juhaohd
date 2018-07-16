@@ -1,5 +1,6 @@
 package bc.juhaohd.com.utils;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -10,9 +11,11 @@ import android.graphics.BitmapFactory;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ import java.util.Enumeration;
 
 import bc.juhaohd.com.R;
 import bc.juhaohd.com.ui.activity.IssueApplication;
+import bc.juhaohd.com.ui.activity.TaoCanHomeActivity;
 
 /**
  * @author Jun
@@ -223,5 +227,14 @@ public class UIUtils {
         }
 
         return pi;
+    }
+
+    public static int getScreenWidth(Activity activity){
+        WindowManager manager = activity.getWindowManager();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(outMetrics);
+        int width = outMetrics.widthPixels;
+        int height = outMetrics.heightPixels;
+        return width;
     }
 }

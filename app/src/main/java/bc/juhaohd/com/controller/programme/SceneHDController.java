@@ -156,6 +156,9 @@ public class SceneHDController extends BaseController implements OnFilterDoneLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if(mView.isToken()){
+            return;
+        }
         mIntent = new Intent(mView.getActivity(), DiyActivity.class);
         String path = NetWorkConst.SCENE_HOST + goodses.getJSONObject(position).getJSONObject(Constance.scene).getString(Constance.original_img);
         IssueApplication.mSelectScreens.add(goodses.getJSONObject(position));

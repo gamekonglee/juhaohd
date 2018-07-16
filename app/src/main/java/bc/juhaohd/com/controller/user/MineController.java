@@ -26,6 +26,7 @@ import bc.juhaohd.com.ui.activity.user.UserLogNewActivity;
 import bc.juhaohd.com.ui.fragment.MineFragment;
 import bc.juhaohd.com.ui.fragment.Home.MineNewFragment;
 import bc.juhaohd.com.utils.ImageLoadProxy;
+import bc.juhaohd.com.utils.MyShare;
 import bc.juhaohd.com.utils.ShareUtil;
 import bc.juhaohd.com.utils.UIUtils;
 import bocang.json.JSONArray;
@@ -241,6 +242,7 @@ public class MineController extends BaseController implements INetworkCallBack {
         switch (requestCode) {
             case NetWorkConst.PROFILE:
                 mUserObject= ans.getJSONObject(Constance.user);
+                if(mUserObject!=null){
                 IssueApplication.mUserObject=mUserObject;
                 String avatar = NetWorkConst.SCENE_HOST+mUserObject.getString(Constance.avatar);
                 if (!AppUtils.isEmpty(avatar))
@@ -280,11 +282,15 @@ public class MineController extends BaseController implements INetworkCallBack {
                 unMessageRead02Tv.setVisibility(Integer.parseInt(count02) > 0 ? View.VISIBLE : View.GONE);
                 unMessageRead03Tv.setVisibility(Integer.parseInt(count03) > 0 ? View.VISIBLE : View.GONE);
                 break;
+                }else {
+                    MyShare.get(mView.getActivity()).putString(Constance.TOKEN,"");
+                }
         }
     }
 
     @Override
     public void onFailureListener(String requestCode, JSONObject ans) {
+        MyShare.get(mView.getActivity()).putString(Constance.TOKEN,"");
         if (null == mView || mView.getActivity().isFinishing())
             return;
         if (AppUtils.isEmpty(ans)) {

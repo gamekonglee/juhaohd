@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:text="proPriceTv"
+                android:text=""
                 android:id="@+id/proPriceTv"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
@@ -116,7 +116,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_width="164dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="100dp"
         android:layout_marginRight="60dp"
         android:layout_height="164dp" />
     <TextView
@@ -125,7 +126,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="70dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="50dp"
         android:text="分享给好友"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

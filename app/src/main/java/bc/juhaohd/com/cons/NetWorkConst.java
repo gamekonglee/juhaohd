@@ -27,7 +27,7 @@ public class NetWorkConst {
     public static final String TIME_BUY_BANNER_HOST = "http://www."+APPNAME+".com/data/afficheimg/";
 
     public static final String GROUPLIST = API_HOST + "/v2/ecapi.goods.grouplist";
-    public static final String TWO_CODE = "http://pan.baidu.com/share/qrcode?w=300&h=300&url=";
+    public static final String TWO_CODE = "https://www.kuaizhan.com/common/encode-png?large=true&data=";
     public static final String TOKEN_QUERY = API_HOST + "/v2/ecapi.user.hd.query";
 
     public static String APK_NAME="juhaoHD_v";
@@ -43,7 +43,7 @@ public class NetWorkConst {
     public final static  String SHAREIMAGE_LOGO=SCENE_HOST+"logo.png";
 
     //产品卡
-    public final static  String WEB_PRODUCT_CARD="http://browser.edsmall.cn/webimg?url="+SCENE_HOST+"phone_goods_show.php?id=";
+    public final static  String WEB_PRODUCT_CARD=SCENE_HOST+"phone_goods_show.php?id=";
 
     //分享产品
 //    public final static String SHAREPRODUCT=SCENE_HOST+"goods.php?id=";

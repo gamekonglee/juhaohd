@@ -17,7 +17,7 @@
     <string name="logistics_address">请输入物流地址</string>
     <string name="UMUpdateNow">立即更新</string>
     <string name="UMNotNow">取消</string>
-    <string name="down_waiting">正在下载最的更新包请稍后</string>
+    <string name="down_waiting">正在下载最新的更新包请稍后</string>
     <string name="download_cancel">下载取消</string>
     <string name="UMLatestVersion">已是最新版本</string>
     <string name="save">保存</string>

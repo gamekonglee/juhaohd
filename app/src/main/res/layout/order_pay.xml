@@ -151,12 +151,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <bc.juhaohd.com.ui.view.MyWebView
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:id="@+id/web_wv"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="110dp"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_marginRight="160dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:background="@color/deep_transparent"
                 />
             <TextView
@@ -164,7 +164,7 @@
                 android:textColor="#444444"
                 android:textSize="36sp"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="320dp"
+                android:layout_marginTop="270dp"
                 android:layout_marginRight="150dp"
                 android:layout_alignParentRight="true"
                 android:layout_height="wrap_content" />
@@ -174,17 +174,18 @@
                 android:textSize="36sp"
                 android:layout_marginRight="50dp"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="320dp"
-                android:layout_marginLeft="185dp"
+                android:layout_marginTop="270dp"
+                android:layout_marginLeft="150dp"
                 android:layout_height="wrap_content" />
             <bc.juhaohd.com.ui.view.MyWebView
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:id="@+id/web_wv_wx"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_marginLeft="110dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginLeft="140dp"
                 android:background="@color/deep_transparent"
                 />
+
         </RelativeLayout>
 
     </LinearLayout>

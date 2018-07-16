@@ -86,8 +86,7 @@ public class MainNewForJuHaoActivity extends BaseActivity implements View.OnClic
                     // 先隐藏键盘
                     ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
                             .hideSoftInputFromWindow(MainNewForJuHaoActivity.this
-                                            .getCurrentFocus().getWindowToken(),
-                                    InputMethodManager.HIDE_NOT_ALWAYS);
+                                            .getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     searchData(et_search.getText().toString());
                 }
 

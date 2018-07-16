@@ -6,6 +6,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,6 +75,9 @@ public class LoginController extends BaseController implements INetworkCallBack 
             phone_et.setText(MyShare.get(mView).getString(Constance.USERNAME));
         }
         android_id = "scalelogin"+ Settings.System.getString(IssueApplication.getcontext().getContentResolver(), Settings.System.ANDROID_ID)+ SystemClock.currentThreadTimeMillis();
+        WebSettings settings=webView.getSettings();
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
         webView.loadUrl(NetWorkConst.TWO_CODE+ android_id);
         timer = new Timer();
         startTimer();

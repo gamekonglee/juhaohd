@@ -34,7 +34,7 @@ public class HomeShowNewActivity extends BaseActivity {
 //    public TextView tel_tv,address_tv,operator_tv,two_code_tv;
     private HomeShowNewController mHomeShowController;
     public static int mFragmentState=0;
-    public  HomeIndexFragment mHomeFragment;
+    public  Fragment mHomeFragment;
     Fragment currentFragmen;
     public BottomBarOfHome bottom_bar;
     public  TypeFragment mTypeFragment;
@@ -179,8 +179,9 @@ public class HomeShowNewActivity extends BaseActivity {
      */
     public void initTab() {
         if (mHomeFragment == null) {
-            mHomeFragment = new HomeIndexFragment();
+            mHomeFragment = new TypeFragment();
         }
+        mFragmentState=1;
         if (!mHomeFragment.isAdded()) {
             // 提交事务
             getSupportFragmentManager().beginTransaction()

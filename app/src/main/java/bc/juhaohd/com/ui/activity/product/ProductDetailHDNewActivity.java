@@ -109,16 +109,16 @@ public class ProductDetailHDNewActivity extends BaseActivity {
                 mController.sendShareProduct();
                 break;
             case R.id.callLl://联系客服
-                mController.sendCall();
+                if(!isToken()){mController.sendCall();}
                 break;
             case R.id.collect_Ll://收藏
-                mController.sendcollectProduct();
+                if(!isToken()){mController.sendcollectProduct();}
                 break;
             case R.id.toDiyBtn://配配看
-                mController.sendDiy();
+                if(!isToken()){mController.sendDiy();}
                 break;
             case R.id.toCartBtn://加入购物车
-                mController.sendGoCart();
+                if(!isToken())mController.sendGoCart();
                 break;
             case R.id.top_iv://
                 msv.scrollTo(10, 10);

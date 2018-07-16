@@ -10,6 +10,8 @@ import java.io.Serializable;
 public class AttrList implements Serializable {
     private String attr_value;
     private int id;
+    int pid;
+    int level;
 
     public String getAttr_value() {
         return attr_value;
@@ -33,5 +35,21 @@ public class AttrList implements Serializable {
                 "attr_value='" + attr_value + '\'' +
                 ", id=" + id +
                 '}';
+    }
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

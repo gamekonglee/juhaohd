@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_marginBottom="50dp"
     android:layout_width="match_parent"
@@ -20,8 +21,8 @@
                 android:text="本地服务商"
                 android:textColor="#FFFFFFFF"
                 android:layout_marginLeft="54dp"
-                left_width="30dp"
-                left_height="30dp"
+                app:left_width="30dp"
+                app:left_height="30dp"
                 android:drawableLeft="@mipmap/icon_home"
                 android:drawablePadding="8dp"
                 android:textSize="20sp" />
@@ -46,8 +47,12 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="200dp"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+        <ImageView
+            android:src="@mipmap/logo_news"
+            android:layout_gravity="center_vertical"
+            android:layout_width="60dp"
+            android:layout_height="35dp" />
 
         <TextSwitcher
             android:id="@+id/textSwitcher_title"
@@ -56,11 +61,24 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:textColor="#ffffff"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
             android:textSize="24sp"
             android:inAnimation="@anim/push_up_in"
             android:outAnimation="@anim/push_up_out"
             android:padding="0dp"></TextSwitcher>
+        <View
+            android:layout_margin="10dp"
+            android:background="#ffffff"
+            android:layout_width="1dp"
+            android:layout_height="50dp"/>
+        <TextView
+            android:id="@+id/tv_more_news"
+            android:text="更多"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>

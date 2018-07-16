@@ -59,6 +59,7 @@ import bc.juhaohd.com.listener.INetworkCallBack;
 import bc.juhaohd.com.listener.ISelectScreenListener;
 import bc.juhaohd.com.listener.ITwoCodeListener;
 import bc.juhaohd.com.ui.activity.IssueApplication;
+import bc.juhaohd.com.ui.activity.WebViewCpActivity;
 import bc.juhaohd.com.ui.activity.product.ProductDetailHDActivity;
 import bc.juhaohd.com.ui.activity.product.SelectGoodsActivity;
 import bc.juhaohd.com.ui.activity.programme.DiyActivity;
@@ -653,6 +654,8 @@ public class DiyController extends BaseController implements INetworkCallBack, P
             }).start();
 
 
+        }if(requestCode==300){
+            displayCheckedGoods03("file://"+data.getStringExtra("path"));
         }
     }
 
@@ -1316,7 +1319,9 @@ public class DiyController extends BaseController implements INetworkCallBack, P
                 break;
             case 3://产品卡
                 String cardPath = NetWorkConst.WEB_PRODUCT_CARD + productId;
-                displayCheckedGoods03(cardPath);
+                Intent intent=new Intent(mView, WebViewCpActivity.class);
+                intent.putExtra(Constance.url,cardPath);
+                mView.startActivityForResult(intent,300);
                 break;
         }
     }
