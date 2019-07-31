@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.lib.common.hxp.view.PullToRefreshLayout;
 import com.lib.common.hxp.view.PullableGridView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ import bc.juhaohd.com.R;
 import bc.juhaohd.com.adapter.BaseAdapterHelper;
 import bc.juhaohd.com.adapter.QuickAdapter;
 import bc.juhaohd.com.bean.AttrBean;
+import bc.juhaohd.com.bean.Default_photo;
 import bc.juhaohd.com.bean.GoodsBean;
 import bc.juhaohd.com.bean.GroupBuy;
 import bc.juhaohd.com.cons.Constance;
@@ -79,6 +81,7 @@ public class MainNewJuHaoController extends BaseController implements INetworkCa
     private TextView tv_ensure;
     private LinearLayout ll_filter;
     private boolean[][] filterArray;
+    private DecimalFormat df;
 
     public MainNewJuHaoController(MainNewForJuHaoActivity v, boolean is) {
         mView = v;
@@ -137,6 +140,7 @@ public class MainNewJuHaoController extends BaseController implements INetworkCa
         goodsBeen = new ArrayList<>();
         currentPosition=0;
         currentTitlePosition = 0;
+        df = new DecimalFormat("###.00");
 //        unMessageReadTv = (TextView) mView.findViewById(R.id.unMessageReadTv);
         typeAdapter = new QuickAdapter<AttrBean.Attr_list>(mView, R.layout.item_attr){
 
@@ -169,9 +173,10 @@ public class MainNewJuHaoController extends BaseController implements INetworkCa
                     helper.setText(R.id.tv_price," "+item.getGroup_buy().getExt_info().getPrice_ladder().get(0).getPrice());
                 }else {
                     helper.setText(R.id.tv_price," "+item.getCurrent_price());
+                    helper.setText(R.id.tv_old_price,"¥"+df.format(Double.parseDouble(item.getCurrent_price())*1.6));
                 }
 
-                GoodsBean.Default_photo default_photo=item.getDefault_photo();
+                Default_photo default_photo=item.getDefault_photo();
                 if(null!=default_photo){
                     String imageUrl=item.getDefault_photo().getLarge();
                     ImageLoadProxy.displayImage(imageUrl, (ImageView) helper.getView(R.id.iv_photo));
@@ -447,7 +452,7 @@ public class MainNewJuHaoController extends BaseController implements INetworkCa
                 GoodsBean goodsBean=new GoodsBean();
                 goodsBean.setName(array.getJSONObject(i).getString(Constance.name));
                 goodsBean.setCurrent_price(array.getJSONObject(i).getString(Constance.current_price));
-                goodsBean.setDefault_photo(new Gson().fromJson(String.valueOf(array.getJSONObject(i).getJSONObject(Constance.default_photo)), GoodsBean.Default_photo.class));
+                goodsBean.setDefault_photo(new Gson().fromJson(String.valueOf(array.getJSONObject(i).getJSONObject(Constance.default_photo)), Default_photo.class));
                 goodsBean.setId(array.getJSONObject(i).getString(Constance.id));
                 goodsBean.setGroup_buy(new Gson().fromJson(String.valueOf(array.getJSONObject(i).getJSONObject(Constance.group_buy)),GroupBuy.class));
                 temp.add(goodsBean);

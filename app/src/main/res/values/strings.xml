@@ -154,40 +154,45 @@
     <string-array name="style">
         <item>全部</item>
         <item>现代简约</item>
-        <item>欧式古典</item>
-        <item>新古典</item>
         <item>中式</item>
         <item>新中式</item>
-        <item>混搭</item>
-        <item>小美式风格</item>
-        <item>古典美式风格</item>
+        <item>欧式</item>
+        <item>美式</item>
+        <item>田园</item>
         <item>地中海</item>
-        <item>东南亚</item>
-        <item>日式</item>
-        <item>北欧</item>
-        <item>法式</item>
-        <item>简约风格</item>
-        <item>简欧风格</item>
-        <item>其他</item>
+        <item>工业风</item>
+
+        <!--<item>新古典</item>-->
+        <!--<item>混搭</item>-->
+        <!--<item>小美式风格</item>-->
+        <!--<item>古典美式风格</item>-->
+        <!--<item>东南亚</item>-->
+        <!--<item>日式</item>-->
+        <!--<item>北欧</item>-->
+        <!--<item>法式</item>-->
+        <!--<item>简约风格</item>-->
+        <!--<item>简欧风格</item>-->
+        <!--<item>其他</item>-->
     </string-array>
     <string-array name="space">
         <item>全部</item>
-        <item>玄关</item>
         <item>客厅</item>
         <item>餐厅</item>
-        <item>主卧室</item>
-        <item>次卧室</item>
+        <item>卧室</item>
         <item>书房</item>
-        <item>儿童房</item>
-        <item>过厅</item>
-        <item>过道</item>
-        <item>厨房</item>
-        <item>走入式衣柜</item>
         <item>卫生间</item>
-        <item>休闲空间</item>
-        <item>保姆房</item>
         <item>阳台</item>
-        <item>车库</item>
-        <item>其他</item>
+        <item>玄关/过道</item>
+        <item>儿童房</item>
+        <item>复式/别墅</item>
+
+        <!--<item>次卧室</item>-->
+        <!--<item>过厅</item>-->
+        <!--<item>厨房</item>-->
+        <!--<item>走入式衣柜</item>-->
+        <!--<item>休闲空间</item>-->
+        <!--<item>保姆房</item>-->
+        <!--<item>车库</item>-->
+        <!--<item>其他</item>-->
     </string-array>
 </resources>

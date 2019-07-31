@@ -3,13 +3,32 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="个人中心"
-        android:textColor="#ffffff"
-        android:textSize="64sp"
-        android:layout_marginTop="120dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+   <LinearLayout
+       android:layout_marginTop="120dp"
+       android:layout_width="wrap_content"
+       android:gravity="center_vertical"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <TextView
+           android:text="个人中心"
+           android:textColor="#ffffff"
+           android:textSize="64sp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <View
+           android:layout_marginLeft="10dp"
+           android:layout_width="1dp"
+           android:layout_height="20dp"/>
+       <TextView
+           android:id="@+id/tv_setting_new"
+           android:text="设置"
+           android:textSize="18sp"
+           android:layout_marginLeft="10dp"
+           android:textColor="@color/green"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+   </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -231,7 +250,7 @@
             android:layout_height="300dp" />
         <TextView
             android:id="@+id/tv_setting"
-            android:text="设置"
+            android:text="我的产品"
             android:textSize="48sp"
             android:textColor="#ffffff"
             android:gravity="center"

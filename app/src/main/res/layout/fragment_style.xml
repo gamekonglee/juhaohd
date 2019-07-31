@@ -150,7 +150,7 @@
             android:layout_height="300dp" />
         <TextView
             android:id="@+id/tv_houxiandai"
-            android:text="后现代"
+            android:text="轻奢"
             style="@style/tv_home_text"
             android:layout_width="300dp"
             android:layout_height="300dp" />

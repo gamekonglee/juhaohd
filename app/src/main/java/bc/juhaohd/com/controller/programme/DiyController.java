@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -58,7 +59,9 @@ import bc.juhaohd.com.listener.IDiyProductInfoListener;
 import bc.juhaohd.com.listener.INetworkCallBack;
 import bc.juhaohd.com.listener.ISelectScreenListener;
 import bc.juhaohd.com.listener.ITwoCodeListener;
+import bc.juhaohd.com.ui.activity.HomeShowNewActivity;
 import bc.juhaohd.com.ui.activity.IssueApplication;
+import bc.juhaohd.com.ui.activity.MainNewActivity;
 import bc.juhaohd.com.ui.activity.WebViewCpActivity;
 import bc.juhaohd.com.ui.activity.product.ProductDetailHDActivity;
 import bc.juhaohd.com.ui.activity.product.SelectGoodsActivity;
@@ -205,7 +208,6 @@ public class DiyController extends BaseController implements INetworkCallBack, P
         product_properties_tv = (TextView) mView.findViewById(R.id.product_properties_tv);
         product_price_tv = (TextView) mView.findViewById(R.id.product_price_tv);
         two_code_iv = (ImageView) mView.findViewById(R.id.two_code_iv);
-
         product_lv = (ListView) mView.findViewById(R.id.product_lv);
         diy_lv = (ListView) mView.findViewById(R.id.diy_lv);
         mViews = new ArrayList<>();
@@ -248,14 +250,20 @@ public class DiyController extends BaseController implements INetworkCallBack, P
     private void saveData() {
         //                产品ID的累加
         StringBuffer goodsid = new StringBuffer();
-        for (int i = 0; i < mView.mSelectedLightSA.size(); i++) {
-            if(mView.mSelectedLightSA.get(i)==null)
+
+        for (int i = 0; i < IssueApplication.mSelectedLightSA.size(); i++) {
+            if(IssueApplication.mSelectedLightSA.valueAt(i)==null|| TextUtils.isEmpty(IssueApplication.mSelectedLightSA.valueAt(i).getString(Constance.id))){
+                IssueApplication.mSelectedLightSA.removeAt(i);
+            }
+        }
+        for (int i = 0; i < IssueApplication.mSelectedLightSA.size(); i++) {
+            if(IssueApplication.mSelectedLightSA.valueAt(i)==null)
             {
                 MyToast.show(mView,"请重新添加产品");
                 return;
             }
-            goodsid.append(mView.mSelectedLightSA.get(i).getString(Constance.id) + "");
-            if (i < mView.mSelectedLightSA.size() - 1) {
+            goodsid.append(IssueApplication.mSelectedLightSA.valueAt(i).getString(Constance.id) + "");
+            if (i < IssueApplication.mSelectedLightSA.size() - 1) {
                 goodsid.append(",");
             }
         }
@@ -285,8 +293,8 @@ public class DiyController extends BaseController implements INetworkCallBack, P
         params.put("style", mStyle);
         params.put("space", mSpace);
         params.put("parent_id", id + "");
-        Exception e=new Exception("name:"+mTitle+",goods_id:"+goodsid.toString()+",content:"+mContent+",style:"+mStyle+",space:"+mSpace+",parent_id:"+id+"");
-        PgyCrashManager.reportCaughtException(mView,e);
+//        Exception e=new Exception("name:"+mTitle+",goods_id:"+goodsid.toString()+",content:"+mContent+",style:"+mStyle+",space:"+mSpace+",parent_id:"+id+"");
+//        PgyCrashManager.reportCaughtException(mView,e);
         final String imageName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()) + ".png";
         new Thread(new Runnable() { //开启线程上传文件
             @Override
@@ -339,7 +347,7 @@ public class DiyController extends BaseController implements INetworkCallBack, P
      */
     public void goDetele() {
         mFrameLayout.removeView(mFrameLayout.findViewWithTag(IssueApplication.mLightIndex));
-        mView.mSelectedLightSA.remove(IssueApplication.mLightIndex);
+        IssueApplication.mSelectedLightSA.removeAt(IssueApplication.mLightIndex);
     }
 
 
@@ -349,7 +357,7 @@ public class DiyController extends BaseController implements INetworkCallBack, P
      * 保存购物车
      */
     public void goShoppingCart() {
-        if (mView.mSelectedLightSA.size() == 0) {
+        if (IssueApplication.mSelectedLightSA.size() == 0) {
             MyToast.show(mView, "请选择产品");
             return;
         }
@@ -357,8 +365,8 @@ public class DiyController extends BaseController implements INetworkCallBack, P
         mView.setShowDialog("正在加入购物车中...");
         mView.showLoading();
         isGoCart = false;
-        for (int i = 0; i < mView.mSelectedLightSA.size(); i++) {
-            JSONObject object = mView.mSelectedLightSA.valueAt(i);
+        for (int i = 0; i < IssueApplication.mSelectedLightSA.size(); i++) {
+            JSONObject object = IssueApplication.mSelectedLightSA.valueAt(i);
             String id = object.getString(Constance.id);
             JSONArray propertieArray = object.getJSONArray(Constance.properties);
             if (propertieArray.length() == 0) {
@@ -372,7 +380,7 @@ public class DiyController extends BaseController implements INetworkCallBack, P
                     sendGoShoppingCart(id, propertie, 1);
                 }
             }
-            if (i == mView.mSelectedLightSA.size() - 1) {
+            if (i == IssueApplication.mSelectedLightSA.size() - 1) {
                 isGoCart = true;
             }
         }
@@ -501,8 +509,10 @@ public class DiyController extends BaseController implements INetworkCallBack, P
         //        selectProduct(page, "20", null, null, null);
         //        sendAttrList();
         //        pd.setVisibility(View.VISIBLE);
-        mIntent = new Intent(mView, SelectGoodsActivity.class);
+        mIntent = new Intent(mView, MainNewActivity.class);
         mIntent.putExtra(Constance.ISSELECTGOODS, true);
+        mIntent.putExtra(Constance.filter_attr_name,"吊灯");
+        HomeShowNewActivity.mFragmentState=1;
         mView.startActivityForResult(mIntent, Constance.FROMDIY);
     }
 
@@ -692,7 +702,7 @@ public class DiyController extends BaseController implements INetworkCallBack, P
     private int leftMargin = 0;
 
     private void displayCheckedGoods(final JSONObject goods) {
-        if (AppUtils.isEmpty(goods))
+        if (AppUtils.isEmpty(goods)||goods.getJSONObject(Constance.app_img)==null)
             return;
         String path = goods.getJSONObject(Constance.app_img).getString(Constance.img);
         imageLoader.loadImage(path, options,
@@ -716,9 +726,9 @@ public class DiyController extends BaseController implements INetworkCallBack, P
                         // 被点击的灯的编号加1
                         mLightNumber++;
                         // 把点击的灯放到集合里
-                        mView.mSelectedLightSA.put(mLightNumber, goods);
-//                        MyToast.show(mView,""+mView.mSelectedLightSA.size());
-                        addStickerView(loadedImage);
+                        IssueApplication.mSelectedLightSA.put(mLightNumber, goods);
+//                        MyToast.show(mView,""+IssueApplication.mSelectedLightSA.size());
+                        addStickerView(ImageUtil.zoomBitmap(loadedImage,loadedImage.getWidth()/2,loadedImage.getHeight()/2));
 
                     }
 
@@ -742,7 +752,7 @@ public class DiyController extends BaseController implements INetworkCallBack, P
             public void onDeleteClick() {
                 mViews.remove(stickerView);
                 mFrameLayout.removeView(stickerView);
-                mView.mSelectedLightSA.remove(IssueApplication.mLightIndex);
+                IssueApplication.mSelectedLightSA.remove(IssueApplication.mLightIndex);
             }
 
             @Override
@@ -834,11 +844,11 @@ public class DiyController extends BaseController implements INetworkCallBack, P
                 mScreenWidth / 3 * 2 / 3,
                 (mScreenWidth / 3 * 2 / 3 * bitmap.getHeight()) / bitmap.getWidth());
         // 设置灯点击出来的位置
-        if (mView.mSelectedLightSA.size() == 1) {
+        if (IssueApplication.mSelectedLightSA.size() == 1) {
             leftMargin = mScreenWidth / 3 * 2 / 3;
-        } else if (mView.mSelectedLightSA.size() == 2) {
+        } else if (IssueApplication.mSelectedLightSA.size() == 2) {
             leftMargin = mScreenWidth / 3 * 2 / 3 * 2;
-        } else if (mView.mSelectedLightSA.size() == 3) {
+        } else if (IssueApplication.mSelectedLightSA.size() == 3) {
             leftMargin = 0;
         }
         lp.setMargins(mScreenWidth / 2 - (mScreenWidth / 3 * 2 / 6), 20, 0, 0);
@@ -892,11 +902,11 @@ public class DiyController extends BaseController implements INetworkCallBack, P
                                 mScreenWidth / 3 * 2 / 3,
                                 (mScreenWidth / 3 * 2 / 3 * loadedImage.getHeight()) / loadedImage.getWidth());
                         // 设置灯点击出来的位置
-                        if (mView.mSelectedLightSA.size() == 1) {
+                        if (IssueApplication.mSelectedLightSA.size() == 1) {
                             leftMargin = mScreenWidth / 3 * 2 / 3;
-                        } else if (mView.mSelectedLightSA.size() == 2) {
+                        } else if (IssueApplication.mSelectedLightSA.size() == 2) {
                             leftMargin = mScreenWidth / 3 * 2 / 3 * 2;
-                        } else if (mView.mSelectedLightSA.size() == 3) {
+                        } else if (IssueApplication.mSelectedLightSA.size() == 3) {
                             leftMargin = 0;
                         }
                         lp.setMargins(mScreenWidth / 2 - (mScreenWidth / 3 * 2 / 6), 20, 0, 0);
@@ -1259,7 +1269,7 @@ public class DiyController extends BaseController implements INetworkCallBack, P
      */
     public void senDetail() {
         //        detail_rl.setVisibility(View.VISIBLE);
-        //        JSONObject productObject = mView.mSelectedLightSA.get(IssueApplication.mLightIndex);
+        //        JSONObject productObject = IssueApplication.mSelectedLightSA.get(IssueApplication.mLightIndex);
         //        if (AppUtils.isEmpty(productObject))
         //            return;
         //        String name = productObject.getString(Constance.name);
@@ -1281,7 +1291,7 @@ public class DiyController extends BaseController implements INetworkCallBack, P
         //            product_price_tv.setText("价格:￥" + price);
         //        }
         mPopWindow = new DiyProductInfoPopWindow(mView, mView);
-        final JSONObject jsonObject = mView.mSelectedLightSA.get(IssueApplication.mLightIndex);
+        final JSONObject jsonObject = IssueApplication.mSelectedLightSA.get(IssueApplication.mLightIndex);
         if (AppUtils.isEmpty(jsonObject)) {
             MyToast.show(mView, "请选择产品!");
             return;
@@ -1340,7 +1350,7 @@ public class DiyController extends BaseController implements INetworkCallBack, P
      */
     public void goDetail() {
         mIntent = new Intent(mView, ProductDetailHDActivity.class);
-        int productId = mView.mSelectedLightSA.get(IssueApplication.mLightIndex).getInt(Constance.id);
+        int productId = IssueApplication.mSelectedLightSA.get(IssueApplication.mLightIndex).getInt(Constance.id);
         mIntent.putExtra(Constance.product, productId);
         mView.startActivity(mIntent);
     }
@@ -1353,7 +1363,7 @@ public class DiyController extends BaseController implements INetworkCallBack, P
         mView.setShowDialog("正在收藏中!");
         mView.showLoading();
         mIntent = new Intent(mView, ProductDetailHDActivity.class);
-        int productId = mView.mSelectedLightSA.get(IssueApplication.mLightIndex).getInt(Constance.id);
+        int productId = IssueApplication.mSelectedLightSA.get(IssueApplication.mLightIndex).getInt(Constance.id);
         mNetWork.sendAddLikeCollect(productId + "", this);
 
     }

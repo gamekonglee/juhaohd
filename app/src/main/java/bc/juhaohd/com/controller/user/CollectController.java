@@ -1,7 +1,9 @@
 package bc.juhaohd.com.controller.user;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +21,7 @@ import com.lib.common.hxp.view.PullToRefreshLayout;
 import com.lib.common.hxp.view.PullableGridView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,7 @@ import bc.juhaohd.com.R;
 import bc.juhaohd.com.adapter.BaseAdapterHelper;
 import bc.juhaohd.com.adapter.QuickAdapter;
 import bc.juhaohd.com.bean.CollectGoodsBean;
+import bc.juhaohd.com.bean.Default_photo;
 import bc.juhaohd.com.bean.GoodsBean;
 import bc.juhaohd.com.bean.GroupBuy;
 import bc.juhaohd.com.cons.Constance;
@@ -36,6 +40,9 @@ import bc.juhaohd.com.ui.activity.product.ProductDetailHDActivity;
 import bc.juhaohd.com.ui.activity.product.ProductDetailHDNewActivity;
 import bc.juhaohd.com.ui.activity.user.CollectActivity;
 import bc.juhaohd.com.ui.activity.user.CollectNewActivity;
+import bc.juhaohd.com.ui.view.EndOfGridView;
+import bc.juhaohd.com.ui.view.EndOfListView;
+import bc.juhaohd.com.ui.view.PMSwipeRefreshLayout;
 import bc.juhaohd.com.utils.ImageLoadProxy;
 import bocang.json.JSONArray;
 import bocang.json.JSONObject;
@@ -48,13 +55,13 @@ import bocang.utils.MyToast;
  * @date : 2017/2/13 16:18
  * @description :
  */
-public class CollectController extends BaseController implements INetworkCallBack, PullToRefreshLayout.OnRefreshListener {
+public class CollectController extends BaseController implements INetworkCallBack, PullToRefreshLayout.OnRefreshListener, SwipeRefreshLayout.OnRefreshListener, EndOfListView.OnEndOfListListener {
     private CollectNewActivity mView;
 
     private JSONArray goodses;
-    private PullToRefreshLayout mPullToRefreshLayout;
+    private PMSwipeRefreshLayout mPullToRefreshLayout;
     private ProAdapter mProAdapter;
-    private PullableGridView order_sv;
+    private EndOfGridView order_sv;
     private int page = 1;
 
     private View mNullView;
@@ -73,6 +80,7 @@ public class CollectController extends BaseController implements INetworkCallBac
     private Intent mIntent;
     private QuickAdapter goodsAdapter;
     private List<CollectGoodsBean> goodsBeen;
+    private DecimalFormat df;
 
 
     public CollectController(CollectActivity v){
@@ -104,11 +112,11 @@ public class CollectController extends BaseController implements INetworkCallBac
     }
 
     private void initView() {
-        mPullToRefreshLayout = ((PullToRefreshLayout) mView.findViewById(R.id.contentView));
+        mPullToRefreshLayout = ((PMSwipeRefreshLayout) mView.findViewById(R.id.contentView));
         mPullToRefreshLayout.setOnRefreshListener(this);
 
-        order_sv = (PullableGridView) mView.findViewById(R.id.gridView);
-
+        order_sv = (EndOfGridView) mView.findViewById(R.id.gridView);
+        order_sv.setOnEndOfListListener(this);
 
 
         mNullView = mView.findViewById(R.id.null_view);
@@ -132,6 +140,7 @@ public class CollectController extends BaseController implements INetworkCallBac
             }
         });
         goodsBeen = new ArrayList<>();
+        df = new DecimalFormat("###.00");
         goodsAdapter = new QuickAdapter<CollectGoodsBean>(mView, R.layout.item_gridview_goodes){
             @Override
             protected void convert(BaseAdapterHelper helper, CollectGoodsBean item) {
@@ -140,7 +149,9 @@ public class CollectController extends BaseController implements INetworkCallBac
                     helper.setText(R.id.tv_name,item.getGoods().getName().toString());
                 }
                 helper.setText(R.id.tv_price," "+item.getGoods().getCurrent_price());
-                GoodsBean.Default_photo default_photo=item.getGoods().getDefault_photo();
+                helper.setText(R.id.tv_old_price,"¥"+df.format(Integer.parseInt(item.getGoods().getCurrent_price())*1.6));
+                ((TextView)helper.getView(R.id.tv_old_price)).getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                Default_photo default_photo=item.getGoods().getDefault_photo();
                 if(null!=default_photo){
                     String imageUrl=item.getGoods().getDefault_photo().getLarge();
                     ImageLoadProxy.displayImage(imageUrl, (ImageView) helper.getView(R.id.iv_photo));
@@ -261,7 +272,7 @@ public class CollectController extends BaseController implements INetworkCallBac
                 GoodsBean goodsBean=new GoodsBean();
                 goodsBean.setName(array.getJSONObject(i).getString(Constance.name));
                 goodsBean.setCurrent_price(array.getJSONObject(i).getString(Constance.current_price));
-                goodsBean.setDefault_photo(new Gson().fromJson(String.valueOf(array.getJSONObject(i).getJSONObject(Constance.default_photo)), GoodsBean.Default_photo.class));
+                goodsBean.setDefault_photo(new Gson().fromJson(String.valueOf(array.getJSONObject(i).getJSONObject(Constance.default_photo)),Default_photo.class));
                 goodsBean.setId((array.getJSONObject(i).getString(Constance.goods_id)));
                 goodsBean.setGroup_buy(new Gson().fromJson(String.valueOf(array.getJSONObject(i).getJSONObject(Constance.group_buy)),GroupBuy.class));
                 collectgoodsBean.setGoods(goodsBean);
@@ -302,8 +313,7 @@ public class CollectController extends BaseController implements INetworkCallBac
     }
 
     private void dismissRefesh() {
-        mPullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
-        mPullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+      mPullToRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -347,6 +357,16 @@ public class CollectController extends BaseController implements INetworkCallBac
         }
 
     }
+
+    @Override
+    public void onEndOfList(Object lastItem) {
+        if(goodses==null||goodses.length()==0){
+            return;
+        }
+        page++;
+        sendCollectProduct(page,20);
+    }
+
 
     private class ProAdapter extends BaseAdapter {
         public ProAdapter() {

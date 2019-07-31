@@ -60,6 +60,24 @@ public class HomeShowNewController extends BaseController implements INetworkCal
         sendVersion();
 //        pd = ProgressDialog.show(mView,"","加载中");
         sendArticle();
+        checkSystem();
+    }
+
+    private void checkSystem() {
+        mNetWork.checkSystem(new INetworkCallBack() {
+            @Override
+            public void onSuccessListener(String requestCode, JSONObject ans) {
+                    JSONObject data=ans.getJSONObject(Constance.data);
+                    if(data!=null&&data.length()>0){
+                        UIUtils.showSystemStopDialog(mView,data.getString(Constance.text));
+                    }
+            }
+
+            @Override
+            public void onFailureListener(String requestCode, JSONObject ans) {
+
+            }
+        });
     }
 
     /**
@@ -190,7 +208,11 @@ public class HomeShowNewController extends BaseController implements INetworkCal
         mNetWork.sendShopAddress(id, new INetworkCallBack() {
             @Override
             public void onSuccessListener(String requestCode, JSONObject ans) {
+
                 JSONObject jsonObject = ans.getJSONObject(Constance.shop);
+                EventBus.getDefault().postSticky(new bc.juhaohd.com.bean.Message(0,"yes,that's all right~!"));
+
+
                 if (AppUtils.isEmpty(jsonObject))
                     return;
 
@@ -232,7 +254,7 @@ public class HomeShowNewController extends BaseController implements INetworkCal
 //                    mView.operator_tv.setText(mUserObject.getString("nickname"));
                 }
 
-                EventBus.getDefault().postSticky(new bc.juhaohd.com.bean.Message(0,"yes,that's all right~!"));
+
                 String yaoqing = mUserObject.getString(Constance.invite_code);
 //                if (!AppUtils.isEmpty(yaoqing))
 //                    mView.two_code_tv.setText("注册邀请码:" + yaoqing);
@@ -258,10 +280,7 @@ public class HomeShowNewController extends BaseController implements INetworkCal
                     }
                 }
                 IssueApplication.articlesBeans=mArticlesBeans;
-//                if(mView.mStyleFragment!=null)mView.mStyleFragment.onStart();
-//                if(mView.mSpaceFragment!=null)mView.mSpaceFragment.onStart();
-//                if(mView.mTypeFragment!=null)mView.mTypeFragment.onStart();
-//                if(mView.mHomeFragment!=null)mView.mHomeFragment.onStart();
+//
                 EventBus.getDefault().postSticky(new bc.juhaohd.com.bean.Message(0,"yes,that's all right~!"));
                 if (mArticlesBeans.size() == 0)
                     return;
@@ -271,6 +290,11 @@ public class HomeShowNewController extends BaseController implements INetworkCal
 
     @Override
     public void onFailureListener(String requestCode, JSONObject ans) {
+        switch (requestCode) {
+            case NetWorkConst.PROFILE:
+//                UIUtils.showSystemStopDialog(mView,"尊敬的客户，您好！由于你长时间没有登录钜豪商城，你的账号已经被冻结，如需重新开通账号，请致电400-0760-888");
+            break;
+        }
         if (null == mView || mView.isFinishing())
             return;
 

@@ -8,6 +8,7 @@ import android.widget.TextView;
 import bc.juhaohd.com.R;
 import bc.juhaohd.com.common.BaseActivity;
 import bc.juhaohd.com.cons.Constance;
+import bc.juhaohd.com.controller.UserLogNewController;
 import bc.juhaohd.com.controller.user.UserLogController;
 
 /**
@@ -16,7 +17,7 @@ import bc.juhaohd.com.controller.user.UserLogController;
  * @description :物流列表
  */
 public class UserLogNewActivity extends BaseActivity {
-    private UserLogController mController;
+    private UserLogNewController mController;
     private Button btn_save;
     public boolean isSelectLogistics=false;
     private Intent mIntent;
@@ -28,7 +29,7 @@ public class UserLogNewActivity extends BaseActivity {
 
     @Override
     protected void initController() {
-        mController=new UserLogController(this);
+        mController=new UserLogNewController(this);
     }
 
     @Override

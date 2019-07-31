@@ -8,6 +8,7 @@ import bc.juhaohd.com.R;
 import bc.juhaohd.com.bean.Logistics;
 import bc.juhaohd.com.common.BaseActivity;
 import bc.juhaohd.com.cons.Constance;
+import bc.juhaohd.com.controller.UserLogAddNewController;
 import bc.juhaohd.com.controller.user.UserLogAddController;
 import bc.juhaohd.com.ui.view.ShowDialog;
 
@@ -17,7 +18,7 @@ import bc.juhaohd.com.ui.view.ShowDialog;
  * @description
  */
 public class UserLogAddNewActivity extends BaseActivity {
-    private UserLogAddController mController;
+    private UserLogAddNewController mController;
     private Button btn_save;
     private Intent mIntent;
     public Logistics mLogistics;
@@ -29,7 +30,7 @@ public class UserLogAddNewActivity extends BaseActivity {
 
     @Override
     protected void initController() {
-        mController = new UserLogAddController(this);
+        mController = new UserLogAddNewController(this);
     }
 
     @Override

@@ -496,8 +496,11 @@ public class ConfirmOrderController extends BaseController implements INetworkCa
                 loginstic_address_tv.setVisibility(View.VISIBLE);
             }
 
-        } else {
+        } else if(type==R.id.radioEMS){
             mType = 1;
+            logistic_type_rl.setVisibility(View.GONE);
+        }else if(type==R.id.radioself){
+            mType=2;
             logistic_type_rl.setVisibility(View.GONE);
         }
     }

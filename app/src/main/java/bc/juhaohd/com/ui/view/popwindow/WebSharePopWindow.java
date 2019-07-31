@@ -313,7 +313,7 @@ public class WebSharePopWindow extends BasePopwindown implements View.OnClickLis
             case R.id.main_rl:
                 mListener.onTwoCodeChanged("支付不成功");
                 onDismiss();
-                timer.cancel();
+                if(timer!=null)timer.cancel();
                 break;
         }
     }

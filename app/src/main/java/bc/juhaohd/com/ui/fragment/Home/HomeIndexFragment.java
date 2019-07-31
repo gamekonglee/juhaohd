@@ -42,6 +42,7 @@ import bc.juhaohd.com.ui.activity.MainNewForJuHaoActivity;
 import bc.juhaohd.com.ui.activity.TaoCanHomeActivity;
 import bc.juhaohd.com.ui.activity.TestSwitchActivity;
 import bc.juhaohd.com.ui.activity.TimeBuyActivity;
+import bc.juhaohd.com.ui.activity.VideoHomeActivity;
 import bc.juhaohd.com.ui.activity.programme.DiyActivity;
 import bc.juhaohd.com.ui.activity.programme.MatchHomeActivity;
 import bc.juhaohd.com.ui.activity.programme.SelectSceneActivity;
@@ -348,8 +349,9 @@ public class HomeIndexFragment extends BaseFragment implements View.OnClickListe
             break;
         case R.id.tv_audio:
             ((BaseActivity)getActivity()).countDownTimer.cancel();
-            VideoPopWindow popWindow = new VideoPopWindow(getActivity().getBaseContext(), getActivity());
-            popWindow.onShow(((HomeShowNewActivity)getActivity()).main_rl);
+//            VideoPopWindow popWindow = new VideoPopWindow(getActivity().getBaseContext(), getActivity());
+//            popWindow.onShow(((HomeShowNewActivity)getActivity()).main_rl);
+            startActivity(new Intent(getActivity(), VideoHomeActivity.class));
             break;
             case R.id.tv_taocan:
                 startActivity(new Intent(getActivity(), TaoCanHomeActivity.class));

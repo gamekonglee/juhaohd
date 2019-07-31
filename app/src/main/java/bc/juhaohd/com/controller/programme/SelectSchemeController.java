@@ -16,11 +16,15 @@ import bc.juhaohd.com.R;
 import bc.juhaohd.com.bean.Programme;
 import bc.juhaohd.com.cons.Constance;
 import bc.juhaohd.com.controller.BaseController;
+import bc.juhaohd.com.listener.INetworkCallBack;
 import bc.juhaohd.com.listener.ISchemeChooseListener;
 import bc.juhaohd.com.ui.activity.programme.SelectSchemeActivity;
 import bc.juhaohd.com.ui.adapter.SchemeTypeAdapter;
 import bc.juhaohd.com.utils.UIUtils;
+import bocang.json.JSONArray;
+import bocang.json.JSONObject;
 import bocang.utils.AppUtils;
+import bocang.utils.LogUtils;
 import bocang.utils.MyToast;
 
 /**
@@ -35,7 +39,7 @@ public class SelectSchemeController extends BaseController {
     private SchemeTypeAdapter mAdapter;
     private List<Programme> mProgrammes;
     private String mStyle="现代简约";
-    private String mSplace="玄关";
+    private String mSplace="客厅";
     private Intent mIntent;
 
     public SelectSchemeController(SelectSchemeActivity v){
@@ -46,7 +50,7 @@ public class SelectSchemeController extends BaseController {
 
     private void initViewData() {
         setropownMenuData();
-        mAdapter.setData(mProgrammes);
+
     }
 
     private void initView() {
@@ -72,28 +76,49 @@ public class SelectSchemeController extends BaseController {
 
     private void setropownMenuData(){
         mProgrammes=new ArrayList<>();
-        String[] styleArrs = UIUtils.getStringArr(R.array.style);
-        String[] spaceArrs = UIUtils.getStringArr(R.array.space);
+        mNetWork.sendScene(new INetworkCallBack() {
+            @Override
+            public void onSuccessListener(String requestCode, JSONObject ans) {
+                LogUtils.logE("success",ans.toString());
+                JSONArray categories=ans.getJSONArray(Constance.categories);
+                JSONArray spaceArray=categories.getJSONObject(0).getJSONArray(Constance.attrVal);
+                JSONArray styleArray=categories.getJSONObject(1).getJSONArray(Constance.attrVal);
+                String[] styleArrs =new String[categories.getJSONObject(1).getJSONArray(Constance.attrVal).length()];
+                String[] spaceArrs =new String[categories.getJSONObject(0).getJSONArray(Constance.attrVal).length()];
+                for(int i=0;i<spaceArray.length();i++){
+                    spaceArrs[i]=spaceArray.getString(i);
+                }
+                for(int j=0;j<styleArray.length();j++){
+                    styleArrs[j]=styleArray.getString(j);
+                }
+                Programme programme=new Programme();
+//                programme.setAttr_name(UIUtils.getString(R.string.style_name));
+                programme.setAttr_name(categories.getJSONObject(1).getString(Constance.attr_name));
+                List<String> attrVal= Arrays.asList(styleArrs);
+                List<String> attrVal02=new ArrayList<>();
+                for(int i=0;i<attrVal.size();i++){
+                    attrVal02.add(attrVal.get(i));
+                }
 
-        Programme programme=new Programme();
-        programme.setAttr_name(UIUtils.getString(R.string.style_name));
-        List<String> attrVal= Arrays.asList(styleArrs);
-        List<String> attrVal02=new ArrayList<>();
-        for(int i=1;i<attrVal.size();i++){
-            attrVal02.add(attrVal.get(i));
-        }
+                programme.setAttrVal(attrVal02);
+                mProgrammes.add(programme);
+                Programme programme2=new Programme();
+                programme2.setAttr_name(categories.getJSONObject(0).getString(Constance.attr_name));
+                List<String> spaces= Arrays.asList(spaceArrs);
+                List<String> spaces02=new ArrayList<>();
+                for(int i=0;i<spaces.size();i++){
+                    spaces02.add(spaces.get(i));
+                }
+                programme2.setAttrVal(spaces02);
+                mProgrammes.add(programme2);
+                mAdapter.setData(mProgrammes);
+            }
 
-        programme.setAttrVal(attrVal02);
-        mProgrammes.add(programme);
-        Programme programme2=new Programme();
-        programme2.setAttr_name(UIUtils.getString(R.string.splace_name));
-        List<String> spaces= Arrays.asList(spaceArrs);
-        List<String> spaces02=new ArrayList<>();
-        for(int i=1;i<spaces.size();i++){
-            spaces02.add(spaces.get(i));
-        }
-        programme2.setAttrVal(spaces02);
-        mProgrammes.add(programme2);
+            @Override
+            public void onFailureListener(String requestCode, JSONObject ans) {
+                LogUtils.logE("failure",ans.toString());
+            }
+        });
     }
 
 

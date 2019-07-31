@@ -31,6 +31,7 @@ import bc.juhaohd.com.bean.Message;
 import bc.juhaohd.com.common.BaseFragment;
 import bc.juhaohd.com.cons.Constance;
 import bc.juhaohd.com.controller.SpaceController;
+import bc.juhaohd.com.ui.activity.ArticleActivity;
 import bc.juhaohd.com.ui.activity.HomeShowNewActivity;
 import bc.juhaohd.com.ui.activity.IssueApplication;
 import bc.juhaohd.com.ui.activity.MainNewActivity;
@@ -69,6 +70,8 @@ public class SpaceFragment extends BaseFragment implements View.OnClickListener 
     private Bitmap bitmap_icon_space_yt;
     private TextSwitcher textSwitcher_title;
     private List<ArticlesBean> mArticlesBeans;
+    private TextView tv_more_news;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -188,7 +191,9 @@ public class SpaceFragment extends BaseFragment implements View.OnClickListener 
         tv_shufang = (TextView) getView().findViewById(R.id.tv_shufang);
         tv_yangtai = (TextView) getView().findViewById(R.id.tv_yangtai);
         textSwitcher_title = getView().findViewById(R.id.textSwitcher_title);
+        tv_more_news = getView().findViewById(R.id.tv_more_news);
         tv_server = getView().findViewById(R.id.tv_server);
+
         ImageView iv_01=getView().findViewById(R.id.iv_01);
         ImageView iv_02=getView().findViewById(R.id.iv_02);
         ImageView iv_03=getView().findViewById(R.id.iv_03);
@@ -234,6 +239,12 @@ public class SpaceFragment extends BaseFragment implements View.OnClickListener 
         tv_bieshu.setOnClickListener(this);
         tv_shufang.setOnClickListener(this);
         tv_yangtai.setOnClickListener(this);
+        tv_more_news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ArticleActivity.class));
+            }
+        });
     }
 
     @Override
@@ -310,6 +321,7 @@ public class SpaceFragment extends BaseFragment implements View.OnClickListener 
             case R.id.tv_yangtai:
                 filername="阳台";
                 break;
+
 
         }
         intent.putExtra(Constance.filter_attr_name,filername);

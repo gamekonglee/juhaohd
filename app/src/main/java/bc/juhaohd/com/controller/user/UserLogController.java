@@ -36,7 +36,7 @@ import bocang.json.JSONObject;
  * @description :
  */
 public class UserLogController extends BaseController implements PullToRefreshLayout.OnRefreshListener, INetworkCallBack {
-    private UserLogNewActivity mView;
+    private UserLogActivity mView;
     private ProAdapter mProAdapter;
     private ListViewForScrollView order_sv;
     private int page = 1;
@@ -50,14 +50,14 @@ public class UserLogController extends BaseController implements PullToRefreshLa
     private Intent mIntent;
     private TextView tv_add;
 
+//
+//    public UserLogController(UserLogActivity v) {
+//        mView = v;
+//        initView();
+//        initViewData();
+//    }
 
     public UserLogController(UserLogActivity v) {
-//        mView = v;
-        initView();
-        initViewData();
-    }
-
-    public UserLogController(UserLogNewActivity v) {
         mView = v;
         initView();
         initViewData();
@@ -98,7 +98,6 @@ public class UserLogController extends BaseController implements PullToRefreshLa
 //                }
             }
         });
-
         mNullView = mView.findViewById(R.id.null_view);
         mNullNet = mView.findViewById(R.id.null_net);
         mRefeshBtn = (Button) mNullNet.findViewById(R.id.refesh_btn);

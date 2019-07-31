@@ -104,8 +104,16 @@ public class OrderDetailController extends BaseController implements INetworkCal
         if( mView.mStatus==-1){
             mView.mStatus = mView.mOrderObject.getInteger(Constance.status);
         }
+        if(IssueApplication.mUserObject==null){
+            return;
+        }
         mLevel= IssueApplication.mUserObject.getInt(Constance.level);
         getState(mView.mStatus);
+        int mOrderLevel=mView.mOrderObject.getInteger(Constance.level);
+        if(mOrderLevel!=mLevel){
+            do02_tv.setVisibility(View.GONE);
+            do03_tv.setVisibility(View.GONE);
+        }
         JSONObject consigneeObject= mView.mOrderObject.getJSONObject(Constance.consignee);
         consignee_tv.setText(consigneeObject.getString(Constance.name));
         phone_tv.setText(consigneeObject.getString(Constance.mobile));

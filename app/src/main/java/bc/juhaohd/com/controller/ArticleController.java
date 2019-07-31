@@ -88,17 +88,17 @@ public class ArticleController extends BaseController implements PullToRefreshLa
                     mArticlesBeans=new ArrayList<>();
                     for(int i=0;i<mArticlesArray.length();i++){
                         JSONObject jsonObject = mArticlesArray.getJSONObject(i);
-                        if (jsonObject.getInt(Constance.article_type) == 1) {
+//                        if (jsonObject.getInt(Constance.article_type) == 1) {
                             mArticlesBeans.add(new Gson().fromJson(String.valueOf(mArticlesArray.getJSONObject(i)), ArticlesBean.class));
-                        }
+//                        }
                     }
                 }
                 else if (null != mArticlesBeans) {
                     for (int i = 0; i < mArticlesArray.length(); i++) {
                         JSONObject jsonObject = mArticlesArray.getJSONObject(i);
-                        if (jsonObject.getInt(Constance.article_type) == 1) {
+//                        if (jsonObject.getInt(Constance.article_type) == 1) {
                             mArticlesBeans.add(new Gson().fromJson(String.valueOf(mArticlesArray.getJSONObject(i)), ArticlesBean.class));
-                        }
+//                        }
                     }
 
                     if (AppUtils.isEmpty(mArticlesArray))

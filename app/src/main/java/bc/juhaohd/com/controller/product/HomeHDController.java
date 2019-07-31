@@ -21,6 +21,7 @@ import java.util.List;
 import bc.juhaohd.com.adapter.BaseAdapterHelper;
 import bc.juhaohd.com.adapter.QuickAdapter;
 import bc.juhaohd.com.R;
+import bc.juhaohd.com.bean.Default_photo;
 import bc.juhaohd.com.bean.GoodsBean;
 import bc.juhaohd.com.cons.Constance;
 import bc.juhaohd.com.cons.NetWorkConst;
@@ -101,7 +102,7 @@ public class HomeHDController extends BaseController implements OnFilterDoneList
                 helper.setText(R.id.old_price_tv,"￥"+item.getPrice());
                 helper.setText(R.id.price_tv,"￥"+item.getCurrent_price());
                 ((TextView)helper.getView(R.id.old_price_tv)).getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-                GoodsBean.Default_photo default_photo=item.getDefault_photo();
+                Default_photo default_photo=item.getDefault_photo();
                 if(null!=default_photo){
                     String imageUrl=item.getDefault_photo().getLarge();
                     ImageLoadProxy.displayImage(imageUrl, (ImageView) helper.getView(R.id.imageView));

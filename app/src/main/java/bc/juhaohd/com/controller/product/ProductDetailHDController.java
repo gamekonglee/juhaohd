@@ -28,6 +28,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,7 +147,7 @@ public class ProductDetailHDController extends BaseController implements INetwor
         mIsLike = productObject.getInteger(Constance.is_liked);
         final String productName = productObject.getString(Constance.name);
         mPrice = productObject.getString(Constance.current_price);
-        mOldPrice = productObject.getString(Constance.price);
+        mOldPrice = new DecimalFormat("###.00").format(Double.parseDouble(mPrice)*1.6)+"";
 
         name_tv.setText(productName);
         com.alibaba.fastjson.JSONArray array = productObject.getJSONArray(Constance.photos);
@@ -202,9 +203,9 @@ public class ProductDetailHDController extends BaseController implements INetwor
             if (!AppUtils.isEmpty(attrsArray)) {
                 int price = attrsArray.getJSONObject(0).getInteger(Constance.attr_price);
                 String parament = attrsArray.getJSONObject(0).getString(Constance.attr_name);
-                double currentPrice = Double.parseDouble(mPrice) + price;
-                mOldPrice=mOldPrice+price;
-                proPriceTv.setText("￥" + currentPrice);
+//                double currentPrice = Double.parseDouble(mPrice) + price;
+//                mOldPrice=mOldPrice+price;
+                proPriceTv.setText("￥" + mPrice);
                 old_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                 old_price.setText("￥" +mOldPrice);
                 mProperty = attrsArray.getJSONObject(0).toJSONString();
@@ -345,7 +346,9 @@ public class ProductDetailHDController extends BaseController implements INetwor
                 mView.goodses = ans.getJSONObject(Constance.product);
                 if(mView.goodses!=null){
                     String title = "来自 " + mView.goodses.getString(Constance.name) + " 产品的分享";
-                    String url=mView.goodses.getString(Constance.share_url);
+//                    String url=mView.goodses.getString(Constance.share_url);
+                    String url=NetWorkConst.SHAREPRODUCT_NEW+mView.goodses.getString(Constance.id);
+
                     MyShare.get(mView).putString(Constance.sharePath, url);
                     MyShare.get(mView).putString(Constance.shareRemark, title);
 //                    LogUtils.logE("shareUrl",url);
@@ -438,6 +441,7 @@ public class ProductDetailHDController extends BaseController implements INetwor
      */
     private void getWebView(String htmlValue) {
         String html = htmlValue;
+        html=html.replace("src=\"http://www.juhao.com","src=\"");
         html=html.replace("src=\"", "src=\"" + NetWorkConst.SCENE_HOST);
 //        html = html.replace("<p><img src=\"", "<img src=\"" + NetWorkConst.SCENE_HOST);
 //        html = html.replace("</p>", "");

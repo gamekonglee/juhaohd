@@ -37,7 +37,7 @@
         <View
             style="@style/view_style"
             />
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -56,9 +56,9 @@
                     android:src="@drawable/bg_default"/>
             </RelativeLayout>
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="300dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:paddingTop="10dp">
                 <ListView
@@ -72,6 +72,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
+                android:layout_alignParentRight="true"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
                 <RelativeLayout
@@ -192,7 +193,7 @@
 
                 </RelativeLayout>
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
 

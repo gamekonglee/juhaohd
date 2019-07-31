@@ -8,8 +8,8 @@ android {
         applicationId "bc.juhaohd.com"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 12
-        versionName "1.16"
+        versionCode 37
+        versionName "1.41"
         multiDexEnabled true
 
         ndk {
@@ -46,6 +46,12 @@ android {
     dexOptions {
         incremental true
         javaMaxHeapSize "4g"
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
 
 }
@@ -96,4 +102,7 @@ dependencies {
     compile files('libs/pgyer_sdk_android_2.8.1.jar')
     implementation project(':okhttputils')
     implementation files('libs/71ChatSDK-3.1.0.jar')
+    compile  'com.umeng.umsdk:analytics:8.0.0'
+    compile  'com.umeng.umsdk:common:2.0.0'
+
 }

@@ -37,6 +37,7 @@ public class MineNewFragment extends BaseFragment implements View.OnClickListene
     private Bitmap icon_my_logistics;
     private Bitmap icon_my_collection;
     private Bitmap icon_setting;
+    private TextView tv_setting_new;
 
     @Nullable
     @Override
@@ -76,6 +77,7 @@ public class MineNewFragment extends BaseFragment implements View.OnClickListene
         stream_rl = (View) getActivity().findViewById(R.id.stream_rl);
         tv_setting = (TextView) getActivity().findViewById(R.id.tv_setting);
         TextView tv_change= (TextView) getActivity().findViewById(R.id.tv_change);
+        tv_setting_new = getView().findViewById(R.id.tv_setting_new);
         ImageView iv_01=getView().findViewById(R.id.iv_01);
         ImageView iv_02=getView().findViewById(R.id.iv_02);
         ImageView iv_03=getView().findViewById(R.id.iv_03);
@@ -94,7 +96,7 @@ public class MineNewFragment extends BaseFragment implements View.OnClickListene
         icon_my_collection = UIUtils.readBitMap(getActivity(), R.mipmap.icon_my_collection);
         iv_04.setImageBitmap(icon_my_collection);
 
-        icon_setting = UIUtils.readBitMap(getActivity(), R.mipmap.icon_setting);
+        icon_setting = UIUtils.readBitMap(getActivity(), R.mipmap.icon_my_product);
         iv_05.setImageBitmap(icon_setting);
 
 
@@ -112,6 +114,7 @@ public class MineNewFragment extends BaseFragment implements View.OnClickListene
         address_rl.setOnClickListener(this);
         stream_rl.setOnClickListener(this);
         tv_setting.setOnClickListener(this);
+        tv_setting_new.setOnClickListener(this);
     }
 
     @Override
@@ -193,6 +196,9 @@ public class MineNewFragment extends BaseFragment implements View.OnClickListene
                 mController.setStream();
                 break;
             case R.id.tv_setting:
+                mController.setMyProduct();
+                break;
+            case R.id.tv_setting_new:
                 mController.setSetting();
                 break;
         }

@@ -195,7 +195,7 @@ public class TaoCanHomeController extends BaseController implements EndOfListVie
                 lLp.setMargins(10,10,10,10);
                 float w = (UIUtils.getScreenWidth(mView)-UIUtils.dip2PX(380))/2;
                 lLp.width = (int) w;
-                lLp.height= (int) (w*(230+86)/345);
+                lLp.height= (int) (w*(170)/375);
                 holder.imageView.setLayoutParams(lLp);
                 convertView.setTag(holder);
             } else {
@@ -205,7 +205,7 @@ public class TaoCanHomeController extends BaseController implements EndOfListVie
                 String name = goodses.getJSONObject(position).getString(Constance.name);
                 holder.textView.setText(name);
                 //                holder.imageView.setImageResource(R.drawable.bg_default);
-                ImageLoader.getInstance().displayImage(NetWorkConst.SCENE_HOST+goodses.getJSONObject(position).getString(Constance.original_img)
+                ImageLoader.getInstance().displayImage(goodses.getJSONObject(position).getJSONObject(Constance.default_photo).getString(Constance.thumb)
                         , holder.imageView);
 
                 JSONObject groupBuyObject = goodses.getJSONObject(position).getJSONObject(Constance.group_buy);

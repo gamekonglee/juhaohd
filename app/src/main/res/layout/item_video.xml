@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="368dp"
+    android:background="@drawable/bg_corner_white_full_10"
+    android:layout_height="303dp">
+    <ImageView
+        android:id="@+id/iv_video"
+        android:src="@mipmap/img_five"
+        android:layout_width="368dp"
+        android:layout_height="303dp" />
+
+</LinearLayout>

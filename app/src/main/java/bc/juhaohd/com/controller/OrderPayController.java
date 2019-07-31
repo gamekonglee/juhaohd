@@ -115,6 +115,9 @@ public class OrderPayController extends BaseController implements INetworkCallBa
 
             @Override
             public void onFailureListener(String requestCode, com.alibaba.fastjson.JSONObject ans) {
+                if(ans==null){
+                    return;
+                }
                 int errorCode = ans.getInteger(error_code);
                 if (errorCode == 404) {
                     MyToast.show(mView,"支付成功");

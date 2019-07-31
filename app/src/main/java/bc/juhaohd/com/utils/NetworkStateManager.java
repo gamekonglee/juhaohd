@@ -36,7 +36,7 @@ public class NetworkStateManager {
      */
     public boolean isNetworkConnected() {
         if (context == null) {
-            context= IssueApplication.getInstance();
+            context= IssueApplication.getcontext();
         }
         ConnectivityManager connectivity = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);

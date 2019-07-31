@@ -24,6 +24,7 @@ import bc.juhaohd.com.ui.fragment.Home.MineNewFragment;
 import bc.juhaohd.com.ui.fragment.Home.SpaceFragment;
 import bc.juhaohd.com.ui.fragment.Home.StyleFragment;
 import bc.juhaohd.com.ui.fragment.Home.TypeFragment;
+import bc.juhaohd.com.ui.fragment.HomeFragment;
 import bc.juhaohd.com.ui.fragment.SceneHDFragment;
 import bc.juhaohd.com.ui.view.BottomBarOfHome;
 import bc.juhaohd.com.utils.MyShare;
@@ -129,6 +130,7 @@ public class HomeShowNewActivity extends BaseActivity {
         }
         mHomeShowController.sendUser();
         if(!IssueApplication.noAd){
+            if(countDownTimer!=null)
             countDownTimer.start();
         }
 //        Toast.makeText(HomeShowNewActivity.this, "oncreate", Toast.LENGTH_SHORT).show();
@@ -178,10 +180,11 @@ public class HomeShowNewActivity extends BaseActivity {
      * 初始化底部标签
      */
     public void initTab() {
+//        mFragmentState=1;
         if (mHomeFragment == null) {
-            mHomeFragment = new TypeFragment();
+            mHomeFragment = new HomeIndexFragment();
+//            mHomeFragment = new TypeFragment();
         }
-        mFragmentState=1;
         if (!mHomeFragment.isAdded()) {
             // 提交事务
             getSupportFragmentManager().beginTransaction()

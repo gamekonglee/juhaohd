@@ -3,16 +3,17 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        android:minHeight="?attr/actionBarSize">
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="@color/white"-->
+        <!--android:minHeight="?attr/actionBarSize">-->
 
         <RelativeLayout
+            android:background="@color/green"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="?attr/actionBarSize">
 
             <LinearLayout
                 android:layout_width="80dp"
@@ -34,7 +35,7 @@
                 android:id="@+id/et_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#222222"
+                android:textColor="#ffffff"
                 android:layout_centerInParent="true"
                 android:text="请先保存方案"
                 android:textSize="23dp"
@@ -56,14 +57,14 @@
                     android:text="@string/save"
                     android:textSize="20sp"
                     android:gravity="center"
-                    android:textColor="@color/red"
+                    android:textColor="#ffffff"
                     />
             </RelativeLayout>
 
         </RelativeLayout>
 
 
-    </android.support.v7.widget.Toolbar>
+    <!--</android.support.v7.widget.Toolbar>-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

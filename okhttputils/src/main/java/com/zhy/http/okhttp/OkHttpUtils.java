@@ -1,5 +1,7 @@
 package com.zhy.http.okhttp;
 
+import android.net.Network;
+
 import com.zhy.http.okhttp.builder.GetBuilder;
 import com.zhy.http.okhttp.builder.HeadBuilder;
 import com.zhy.http.okhttp.builder.OtherRequestBuilder;
@@ -15,6 +17,7 @@ import java.util.concurrent.Executor;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.Response;
 
 /**
@@ -188,7 +191,10 @@ public class OkHttpUtils
             }
         });
     }
-
+    public  static void getAdPic(okhttp3.Callback callback){
+        OkHttpClient okHttpClient=new OkHttpClient();
+//        Request request=new Request.Builder().url(Consta)
+    }
     public void cancelTag(Object tag)
     {
         for (Call call : mOkHttpClient.dispatcher().queuedCalls())

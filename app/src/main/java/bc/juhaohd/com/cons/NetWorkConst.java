@@ -29,6 +29,10 @@ public class NetWorkConst {
     public static final String GROUPLIST = API_HOST + "/v2/ecapi.goods.grouplist";
     public static final String TWO_CODE = "https://www.kuaizhan.com/common/encode-png?large=true&data=";
     public static final String TOKEN_QUERY = API_HOST + "/v2/ecapi.user.hd.query";
+    public static final String PRODUCTYIJI = API_HOST + "/v2/ecapi.goods.agentlist";
+    public static final String CATEGORY_SCENE = API_HOST + "/v2/ecapi.scene.category.list";
+    public static final String CHECK_SYSTEM = API_HOST + "/v2/ecapi.system.check";
+    public static final String SHAREPRODUCT_NEW = SCENE_HOST + "/mobile/index.php?m=default&c=goods&a=index&id=";
 
     public static String APK_NAME="juhaoHD_v";
 
@@ -66,7 +70,7 @@ public class NetWorkConst {
 
     //广告
     public static final String BANNER = API_HOST + "/v2/ecapi.banner.list";
-
+    public static final String BANNER_INDEX = API_HOST + "/v2/ecapi.banner.index";
     //注册
     public static final String REGIEST = API_HOST + "/v2/ecapi.auth.mobile.signup";
 

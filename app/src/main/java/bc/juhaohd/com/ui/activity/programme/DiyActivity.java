@@ -43,7 +43,7 @@ public class DiyActivity extends BaseActivity {
     public  LinearLayout select_ll;
     private FrameLayout sceneFrameLayout;
     public String mPath;
-    public SparseArray<JSONObject> mSelectedLightSA = new SparseArray<>();
+//    public SparseArray<JSONObject> mSelectedLightSA = new SparseArray<>();
     public JSONObject mGoodsObject;
     public String mProperty="";
     public String mProductId="";
@@ -132,6 +132,7 @@ public class DiyActivity extends BaseActivity {
         mGoodsObject= (JSONObject) intent.getSerializableExtra(Constance.product);
         if(AppUtils.isEmpty(mGoodsObject)) return;
         mProductId=mGoodsObject.getString(Constance.id);
+        IssueApplication.mSelectedLightSA=new SparseArray<>();
     }
 
     @Override

@@ -11,12 +11,15 @@ import android.graphics.BitmapFactory;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Adapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,8 +29,13 @@ import java.net.SocketException;
 import java.util.Enumeration;
 
 import bc.juhaohd.com.R;
+import bc.juhaohd.com.bean.AppVersion;
+import bc.juhaohd.com.cons.Constance;
+import bc.juhaohd.com.cons.NetWorkConst;
+import bc.juhaohd.com.ui.activity.HomeShowNewActivity;
 import bc.juhaohd.com.ui.activity.IssueApplication;
 import bc.juhaohd.com.ui.activity.TaoCanHomeActivity;
+import bc.juhaohd.com.utils.upload.UpAppUtils;
 
 /**
  * @author Jun
@@ -236,5 +244,21 @@ public class UIUtils {
         int width = outMetrics.widthPixels;
         int height = outMetrics.heightPixels;
         return width;
+    }
+
+    public static void showSystemStopDialog(final HomeShowNewActivity mView, String string) {
+        final Dialog dialog = new Dialog(mView, R.style.customDialog);
+        dialog.setContentView(R.layout.dialog_system);
+        TextView tv_info= (TextView) dialog.findViewById(R.id.tv_update_info);
+        Button btn_upgrate= (Button) dialog.findViewById(R.id.btn_upgrate);
+        dialog.setCancelable(false);
+        tv_info.setText(""+ string);
+        dialog.show();
+        btn_upgrate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mView.finish();
+            }
+        });
     }
 }

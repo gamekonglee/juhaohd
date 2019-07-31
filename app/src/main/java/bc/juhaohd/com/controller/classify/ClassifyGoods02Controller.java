@@ -106,7 +106,7 @@ public class ClassifyGoods02Controller extends BaseController implements INetwor
                 filter += mAdapter.mAttrList.get(i).getId() + ".";
             }
         }
-        Toast.makeText(mView, filter, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mView, filter, Toast.LENGTH_SHORT).show();
         mIntent.putExtra(Constance.filter_attr, filter);
         mView.setResult(103, mIntent);//告诉原来的Activity 将数据传递给它
         mView.finish();

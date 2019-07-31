@@ -30,8 +30,8 @@
                     android:padding="10dp"
                     android:layout_centerHorizontal="true"
                     android:background="@color/transparent"
-                    android:layout_width="210dp"
-                    android:layout_height="210dp"/>
+                    android:layout_width="205dp"
+                    android:layout_height="205dp"/>
                 <TextView
                     android:text="输入不方便？扫一扫"
                     android:textSize="21sp"

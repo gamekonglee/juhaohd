@@ -1,5 +1,6 @@
 package bc.juhaohd.com.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import cn.jpush.android.api.JPushInterface;
 
 public class MainNewActivity extends BaseActivity implements View.OnClickListener {
 
+    public boolean isSelectGoods;
     private MainNewController mainNewController;
     private TextView tv_title;
     public boolean isAttrloadData;
@@ -42,6 +44,8 @@ public class MainNewActivity extends BaseActivity implements View.OnClickListene
     public ImageView top_iv;
     public String keyword="";
     private ImageView iv_search;
+    private View select_rl;
+    public TextView select_num_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,10 @@ public class MainNewActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void InitDataView() {
+        if (isSelectGoods) {
+            select_rl.setVisibility(View.VISIBLE);
+        }
+        select_num_tv.setText(IssueApplication.mSelectProducts.length()+"");
     }
 
     @Override
@@ -79,6 +87,16 @@ public class MainNewActivity extends BaseActivity implements View.OnClickListene
         top_iv = (ImageView) findViewById(R.id.top_iv);
         et_search = (EditText) findViewById(R.id.et_search);
         iv_search = (ImageView) findViewById(R.id.iv_search);
+        select_num_tv = (TextView)findViewById(R.id.select_num_tv);
+        select_rl = findViewById(R.id.select_rl);
+        select_rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mIntent = new Intent();
+                setResult(Constance.FROMDIY, mIntent);//告诉原来的Activity 将数据传递给它
+                finish();//一定要调用该方法 关闭新的AC 此时 老是AC才能获取到Itent里面的值
+            }
+        });
         et_search.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -130,11 +148,14 @@ public class MainNewActivity extends BaseActivity implements View.OnClickListene
         }
         tv_title.setText(filter_attr_name);
 
+
     }
 
     @Override
     protected void initData() {
-
+        if(getIntent()!=null){
+        isSelectGoods = getIntent().getBooleanExtra(Constance.ISSELECTGOODS, false);
+        }
     }
     @Override
     public void onStart() {
@@ -199,7 +220,7 @@ public class MainNewActivity extends BaseActivity implements View.OnClickListene
             return;
         }
 
-        filter_attr="";
+//        filter_attr="";
 //        filter_attr_name="类型,空间,风格";
 //        if (!AppUtils.isEmpty(filter_attr_name)) {
 //            mainNewController.getDropDownMenuText();
@@ -235,6 +256,10 @@ public class MainNewActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void onViewClick(View v) {
+        switch (v.getId()) {
+            case R.id.select_rl:
 
+                break;
+        }
     }
 }

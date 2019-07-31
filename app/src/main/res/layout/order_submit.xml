@@ -22,6 +22,17 @@
        android:layout_height="wrap_content"
        android:orientation="horizontal">
        <RadioButton
+           android:id="@+id/radioself"
+           android:text="自提"
+           android:checked="true"
+           android:textColor="#444444"
+           android:textSize="36sp"
+           android:button="@drawable/rb_selector_orange"
+           android:paddingLeft="15dp"
+           android:layout_marginLeft="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <RadioButton
            android:id="@+id/radioLogistic"
            android:text="物流"
            android:textColor="#444444"
@@ -33,7 +44,7 @@
            android:layout_height="wrap_content" />
        <RadioButton
            android:id="@+id/radioEMS"
-           android:checked="true"
+
            android:text="快递"
            android:textColor="#444444"
            android:textSize="36sp"

@@ -104,7 +104,7 @@ public class Network {
         JSONObject params = new JSONObject();
         params.add("username", username);
         params.add("password", password);
-        params.add("state", "yes");
+        params.add("state", "1");
         sendRequest(params, NetWorkConst.LOGIN, 2, 0, iNetworkCallBack);
     }
 
@@ -460,7 +460,7 @@ public class Network {
         params.add("id", 2);
         params.add("page", page);
         params.add("per_page", per_page);
-        sendRequest(params, NetWorkConst.ARTICLELIST, 2, 0, iNetworkCallBack);
+        sendRequest(params, NetWorkConst.ARTICLELIST, 1, 0, iNetworkCallBack);
 
     }
 
@@ -549,6 +549,20 @@ public class Network {
         sendRequest(params, NetWorkConst.QEAPI+token, 1, 1, iNetworkCallBack);
     }
 
+    public void selectYIJIProduct(int page, String per, INetworkCallBack iNetworkCallBack) {
+        JSONObject params=new JSONObject();
+        params.add("page", page);
+        params.add("per_page", per);
+        params.add("brand", null);
+        params.add("category", null);
+        params.add("filter_attr", null);
+        params.add("shop", null);
+        params.add("keyword", null);
+        params.add("sort_key", null);
+        params.add("sort_value", null);
+        params.add("invite_code", null);
+        sendRequest(params,NetWorkConst.PRODUCTYIJI,2,0,iNetworkCallBack);
+    }
 
     /**
      * 发送请求
@@ -680,5 +694,16 @@ public class Network {
         JSONObject jsonObject=new JSONObject();
         jsonObject.add("sid",android_id);
         sendRequest02(jsonObject,NetWorkConst.TOKEN_QUERY,0,iNetworkCallBack02);
+    }
+
+    public void sendScene(INetworkCallBack iNetworkCallBack) {
+        JSONObject jsonObject=new JSONObject();
+        sendRequest(jsonObject, NetWorkConst.CATEGORY_SCENE,1,0,iNetworkCallBack);
+    }
+
+    public void checkSystem(INetworkCallBack iNetworkCallBack) {
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.add("is_hd","1");
+        sendRequest(jsonObject,NetWorkConst.CHECK_SYSTEM,1,0,iNetworkCallBack);
     }
 }

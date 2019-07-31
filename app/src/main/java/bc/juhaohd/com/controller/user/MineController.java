@@ -19,6 +19,7 @@ import bc.juhaohd.com.ui.activity.SettingNewActivity;
 import bc.juhaohd.com.ui.activity.user.CollectNewActivity;
 import bc.juhaohd.com.ui.activity.user.MessageActivity;
 import bc.juhaohd.com.ui.activity.user.MyOrderNewActivity;
+import bc.juhaohd.com.ui.activity.user.MyProductActivity;
 import bc.juhaohd.com.ui.activity.user.PerfectMydataActivity;
 import bc.juhaohd.com.ui.activity.user.PerfectMydataNewActivity;
 import bc.juhaohd.com.ui.activity.user.UserAddrNewActivity;
@@ -265,7 +266,7 @@ public class MineController extends BaseController implements INetworkCallBack {
 
                 if (AppUtils.isEmpty(nickName)) {
                     nickname_tv.setText(username);
-                    IntentUtil.startActivity(mView.getActivity(), PerfectMydataActivity.class, false);
+                    IntentUtil.startActivity(mView.getActivity(), PerfectMydataNewActivity.class, false);
                     return;
                 } else {
                     nickname_tv.setText(nickName);
@@ -311,5 +312,9 @@ public class MineController extends BaseController implements INetworkCallBack {
         unMessageRead02Tv.setVisibility(View.GONE);
         unMessageRead03Tv.setVisibility(View.GONE);
 
+    }
+
+    public void setMyProduct() {
+        mView.startActivity(new Intent(mView.getContext(), MyProductActivity.class));
     }
 }

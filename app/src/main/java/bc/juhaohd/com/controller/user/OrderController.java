@@ -32,6 +32,7 @@ import com.lib.common.hxp.view.ListViewForScrollView;
 import com.lib.common.hxp.view.PullToRefreshLayout;
 import com.lib.common.hxp.view.PullableGridView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.pgyersdk.crash.PgyCrashManager;
 
 import java.text.DecimalFormat;
 import java.util.Timer;
@@ -47,6 +48,7 @@ import bc.juhaohd.com.controller.BaseController;
 import bc.juhaohd.com.listener.INetworkCallBack;
 import bc.juhaohd.com.listener.INetworkCallBack02;
 import bc.juhaohd.com.listener.ITwoCodeListener;
+import bc.juhaohd.com.ui.activity.IssueApplication;
 import bc.juhaohd.com.ui.activity.OrderPaySuccessActivity;
 import bc.juhaohd.com.ui.activity.user.OrderDetailActivity;
 import bc.juhaohd.com.ui.adapter.OrderGvAdapter;
@@ -589,6 +591,11 @@ public class OrderController extends BaseController implements PullToRefreshLayo
             String total = orderobject.getString(Constance.total);
             final String orderId = orderobject.getString(Constance.id);
             getState(state, holder.state_tv, holder.do_tv, holder.do02_tv, holder.do03_tv);
+            int level= IssueApplication.mUserObject.getInt(Constance.level);
+            int orderLevel=orderobject.getInteger(Constance.level);
+            if (level != orderLevel) {
+                holder.do_tv.setVisibility(View.INVISIBLE);
+            }
             holder.code_tv.setText("订单号:" + orderobject.getString(Constance.sn));
             final JSONArray array = orderobject.getJSONArray(Constance.goods);
             holder.time_tv.setText("下单时间:"+DateUtils.getStrTime(orderobject.getString(Constance.created_at)));
@@ -640,8 +647,19 @@ public class OrderController extends BaseController implements PullToRefreshLayo
                     ImageView img=new ImageView(mView.getActivity());
                     View view=new View(mView.getActivity());
                     view.setBackgroundColor(mView.getResources().getColor(R.color.bg_f6f6f6));
-                    ImageLoader.getInstance().displayImage( object.getJSONObject(Constance.product).
-                            getJSONArray(Constance.photos).getJSONObject(0).getString(Constance.thumb),img);
+//                    if(object.getJSONObject(Constance.product)!=null
+//                            &&object.getJSONObject(Constance.product).getJSONArray(Constance.photos)!=null
+//                            &&object.getJSONObject(Constance.product).getJSONArray(Constance.photos).size()>0
+//                            &&object.getJSONObject(Constance.product).getJSONArray(Constance.photos).getJSONObject(0)!=null){
+
+                    try {
+                        ImageLoader.getInstance().displayImage( object.getJSONObject(Constance.product).
+                                getJSONArray(Constance.photos).getJSONObject(0).getString(Constance.thumb),img,IssueApplication.getImageLoaderOption());
+                    }catch (Exception e){
+                        PgyCrashManager.reportCaughtException(mView.getActivity(),new Exception("id:"+object.toString()));
+                    }
+
+//                    }
                     LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams(UIUtils.dip2PX(220),UIUtils.dip2PX(220));
                     LinearLayout.LayoutParams layoutParams2=new LinearLayout.LayoutParams(UIUtils.dip2PX(20),UIUtils.dip2PX(260));
                     view.setLayoutParams(layoutParams2);

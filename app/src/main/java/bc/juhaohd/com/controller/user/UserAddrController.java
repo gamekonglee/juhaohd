@@ -132,6 +132,7 @@ public class UserAddrController extends BaseController implements INetworkCallBa
             case NetWorkConst.CONSIGNEEDELETE:
                 MyToast.show(mView, "删除成功!");
                 progressDialog.dismiss();
+                sendAddressList();
                 break;
         }
     }

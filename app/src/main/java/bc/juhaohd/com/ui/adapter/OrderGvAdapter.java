@@ -14,11 +14,13 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import bc.juhaohd.com.R;
 import bc.juhaohd.com.cons.Constance;
+import bc.juhaohd.com.ui.activity.IssueApplication;
 import bc.juhaohd.com.ui.view.MyWebView;
 import bocang.utils.AppUtils;
 
@@ -112,9 +114,16 @@ public class OrderGvAdapter extends BaseAdapter {
             original_price= Double.parseDouble(object.getString(Constance.product_price));
         }
         double product_price= Double.parseDouble(object.getString( Constance.product_price ));
+        double money=(original_price-product_price)*Integer.parseInt(num);
 
-        holder.tv_cut_price.setText("已优惠：￥"+(original_price-product_price)*Integer.parseInt(num));
-        holder.tv_mark_price.setText("市场价：￥"+original_price*Integer.parseInt(num));
+        if(money==0){
+            holder.tv_cut_price.setVisibility(View.GONE);
+        }else {
+
+            holder.tv_cut_price.setVisibility(View.VISIBLE);
+        holder.tv_cut_price.setText("已优惠：￥"+df.format(money));
+        }
+        holder.tv_mark_price.setText("优惠价：￥"+df.format(original_price*Integer.parseInt(num)));
 //        holder.rl_webview.setVisibility(View.GONE);
 //        if(mState==0){
 //            if(position==0){
@@ -130,14 +139,14 @@ public class OrderGvAdapter extends BaseAdapter {
 
         try {
             ImageLoader.getInstance().displayImage(object.getJSONObject(Constance.product).
-                    getJSONArray(Constance.photos).getJSONObject(0).getString(Constance.thumb), holder.imageView);
+                    getJSONArray(Constance.photos).getJSONObject(0).getString(Constance.thumb), holder.imageView, IssueApplication.getImageLoaderOption());
         } catch (Exception e) {
 
         }
 
         return convertView;
     }
-
+    DecimalFormat df=new DecimalFormat("###.00");
     class ViewHolder {
         ImageView imageView;
         TextView name_tv;

@@ -329,11 +329,13 @@ public class ImageUtil {
         Bitmap newBitmap;
         TextPaint textPaint = new TextPaint();
         float linePadding = 5;
-        float textSize = 14;
+        float textSize = 10;
         int textColor = Color.BLACK;
         float padding = 5;
         Paint bitmapPaint = new Paint();
-
+        if(text.length()>=18){
+            text=text.substring(0,18);
+        }
         //一行可以显示文字的个数
         int lineTextCount = 20;
         //        int lineTextCount = (int) ((source.getWidth() - 0) / textSize);
@@ -524,7 +526,20 @@ public class ImageUtil {
         return bitmap;
     }
 
-
+    public static Bitmap zoomBitmap(Bitmap bm, int newWidth, int newHeight) {
+        // 获得图片的宽高
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        // 计算缩放比例
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        // 取得想要缩放的matrix参数
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        // 得到新的图片
+        Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+        return newbm;
+    }
 
     /**
      * 将彩色图转换为灰度图

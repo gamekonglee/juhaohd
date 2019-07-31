@@ -77,7 +77,7 @@
 
 <TextView
     android:id="@+id/tv_mark_price"
-    android:text="市场价："
+    android:text="优惠价："
     android:textColor="#444444"
     android:textSize="30sp"
     android:layout_marginTop="20dp"

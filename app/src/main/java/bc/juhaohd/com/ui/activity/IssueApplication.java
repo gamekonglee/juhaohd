@@ -2,17 +2,25 @@ package bc.juhaohd.com.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Handler;
+import android.util.SparseArray;
 
+import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.pgyersdk.crash.PgyCrashManager;
 import com.sevenonechat.sdk.sdkCustomUi.UiCustomOptions;
 import com.sevenonechat.sdk.sdkinfo.SdkRunningClient;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,9 +45,14 @@ import cn.jpush.android.api.JPushInterface;
  * @desc 全局
  */
 public class IssueApplication extends BaseApplication {
+    public static SparseArray<JSONObject> mSelectedLightSA = new SparseArray<>();
     protected static Context mContext = null;
     public static List<BaseActivity> baseActivities;
     public static List<ArticlesBean> articlesBeans;
+    private static DisplayImageOptions defaultOptions;
+    private static ImageLoaderConfiguration config;
+    private static DisplayImageOptions options;
+    public static boolean isStartedAd=false;
 
     @Override
     public void onCreate() {
@@ -57,7 +70,10 @@ public class IssueApplication extends BaseApplication {
         baseActivities = new ArrayList<>();
         articlesBeans=new ArrayList<>();
         noAd=false;
-
+        UMConfigure.init(this, "5cee536a3fc19587b9000383", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+        // 支持在子进程中统计自定义事件
+        UMConfigure.setProcessEvent(true);
 
     }
     private UiCustomOptions initUiCustomOptions() {
@@ -85,20 +101,20 @@ public class IssueApplication extends BaseApplication {
         return mContext;
     }
 
-    //初始化网络图片缓存库
-    private void initImageLoader(){
-        //网络图片例子,结合常用的图片缓存库UIL,你可以根据自己需求自己换其他网络图片库
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true).cacheOnDisk(true).build();
-
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-                getApplicationContext()).defaultDisplayImageOptions(defaultOptions)
-                .threadPriority(Thread.NORM_PRIORITY - 2)
-                .denyCacheImageMultipleSizesInMemory()
-                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
-                .tasksProcessingOrder(QueueProcessingType.LIFO).build();
-        ImageLoader.getInstance().init(config);
-    }
+//    //初始化网络图片缓存库
+//    private void initImageLoader(){
+//        //网络图片例子,结合常用的图片缓存库UIL,你可以根据自己需求自己换其他网络图片库
+//        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+//                .cacheInMemory(true).cacheOnDisk(true).build();
+//
+//        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+//                getApplicationContext()).defaultDisplayImageOptions(defaultOptions)
+//                .threadPriority(Thread.NORM_PRIORITY - 2)
+//                .denyCacheImageMultipleSizesInMemory()
+//                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
+//                .tasksProcessingOrder(QueueProcessingType.LIFO).build();
+//        ImageLoader.getInstance().init(config);
+//    }
     private class MyExceptionHander implements Thread.UncaughtExceptionHandler {
         @Override
         public void uncaughtException(Thread thread, Throwable ex) {
@@ -144,6 +160,87 @@ public class IssueApplication extends BaseApplication {
     }
 
 
+    //初始化网络图片缓存库
+    private void initImageLoader(){
+        //网络图片例子,结合常用的图片缓存库UIL,你可以根据自己需求自己换其他网络图片库
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true).cacheOnDisk(true).build();
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+                getApplicationContext()).defaultDisplayImageOptions(defaultOptions)
+                .threadPriority(Thread.NORM_PRIORITY - 2)
+                .denyCacheImageMultipleSizesInMemory()
+                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
+                .tasksProcessingOrder(QueueProcessingType.LIFO).build();
+        ImageLoader.getInstance().init(config);
+    }
+
+    public  static DisplayImageOptions getImageLoaderOption() {
+        if(defaultOptions==null) {
+            defaultOptions = new DisplayImageOptions.Builder().bitmapConfig(Bitmap.Config.RGB_565)
+                    .cacheInMemory(true).imageScaleType(ImageScaleType.EXACTLY)
+                    .cacheOnDisk(true).build();
+        }
+        // default
+// .memoryCache(new LruMemoryCache((int) (6 * 1024 * 1024)))
+// Remove
+        if(config==null){
+            // .memoryCache(new LruMemoryCache((int) (6 * 1024 * 1024)))
+// Remove
+            config = new ImageLoaderConfiguration.Builder(
+                    getInstance())
+                    .threadPoolSize(4)
+                    .threadPriority(Thread.NORM_PRIORITY - 2)
+                    .denyCacheImageMultipleSizesInMemory()
+                    .diskCacheFileNameGenerator(new Md5FileNameGenerator())
+                    .tasksProcessingOrder(QueueProcessingType.LIFO)
+                    .denyCacheImageMultipleSizesInMemory()
+// .memoryCache(new LruMemoryCache((int) (6 * 1024 * 1024)))
+                    .memoryCache(new LruMemoryCache(5 * 1024 * 1024))
+                    .memoryCacheSize((int) (2 * 1024 * 1024))
+                    .memoryCacheSizePercentage(25)
+                    .diskCacheSize(50 * 1024 * 1024).diskCacheFileCount(200)
+                    .diskCacheFileNameGenerator(new HashCodeFileNameGenerator())
+                    .defaultDisplayImageOptions(defaultOptions).writeDebugLogs() // Remove
+                    .build();
+        }
+// Initialize ImageLoader with configuration.
+        ImageLoader.getInstance().init(config);
+
+        if(options==null){
+            // resource or
+// drawable
+// resource or
+// drawable
+// resource or
+// drawable
+// default
+// default
+// default
+// default
+// default
+// default
+// default
+// default
+            options = new DisplayImageOptions.Builder()
+                    .showImageOnLoading(R.drawable.bg_default) // resource or
+                    // drawable
+                    .showImageForEmptyUri(R.drawable.bg_default) // resource or
+                    // drawable
+                    .showImageOnFail(R.drawable.bg_default) // resource or
+                    .cacheInMemory(true)// drawable
+                    .resetViewBeforeLoading(false) // default
+                    .delayBeforeLoading(1000).cacheInMemory(true) // default
+                    .cacheOnDisk(true) // default
+                    .considerExifParams(false) // default
+                    .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2) // default
+                    .bitmapConfig(Bitmap.Config.RGB_565) // default
+                    .displayer(new SimpleBitmapDisplayer()) // default
+                    .handler(new Handler()) // default
+                    .build();
+        }
+        return options;
+    }
 
     /**
      * 返回桌面

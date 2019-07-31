@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/main_ll"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_color">
 
         <ScrollView
+            android:layout_marginBottom="120dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -197,7 +194,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@color/white"
-                    android:paddingBottom="5dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"/>
 
@@ -214,6 +210,7 @@
                     >
                     <TextView
                         android:id="@+id/old_money"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -285,11 +282,12 @@
                 <RelativeLayout
                     android:id="@+id/order_rl"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@color/white"
                     android:paddingLeft="5dp"
                     android:paddingRight="30dp"
+                    android:paddingBottom="20dp"
                     >
 
                     <TextView
@@ -354,8 +352,8 @@
         <RelativeLayout
             android:id="@+id/botton_rl"
             style="@style/mine_item_style02"
-            android:layout_alignParentBottom="true"
             android:layout_marginTop="10dp"
+            android:layout_gravity="bottom"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             >
@@ -403,7 +401,6 @@
                 android:textSize="23dp"/>
         </RelativeLayout>
 
-    </RelativeLayout>
 
 
-</LinearLayout>
+</FrameLayout>

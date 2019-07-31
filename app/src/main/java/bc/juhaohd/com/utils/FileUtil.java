@@ -32,6 +32,7 @@ import java.util.Date;
 
 import bc.juhaohd.com.cons.Constance;
 import bc.juhaohd.com.ui.activity.IssueApplication;
+import bc.juhaohd.com.utils.upload.UpAppUtils;
 import bocang.utils.PermissionUtils;
 
 import static android.os.Environment.MEDIA_MOUNTED;
@@ -426,5 +427,16 @@ public class FileUtil {
 
     }
 
+
+
+    public static String getAdExternDir(String dir) {
+        String path = UpAppUtils.UP_SAVEPATH + File.separator + "ad/";
+
+        if (dir != null) {
+            path += dir;
+        }
+
+        return path;
+    }
 
 }

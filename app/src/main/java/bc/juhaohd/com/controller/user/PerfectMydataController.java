@@ -52,11 +52,11 @@ public class PerfectMydataController extends BaseController implements OnItemCli
     public CircleImageView head_iv;
     public int sexType = 0;
 
-    public PerfectMydataController(PerfectMydataActivity v) {
-//        mView = v;
-        initView();
-        initViewData();
-    }
+//    public PerfectMydataController(PerfectMydataActivity v) {
+////        mView = v;
+//        initView();
+//        initViewData();
+//    }
 
     public PerfectMydataController(PerfectMydataNewActivity v) {
         mView = v;

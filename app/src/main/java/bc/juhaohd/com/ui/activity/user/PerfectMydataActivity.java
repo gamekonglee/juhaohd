@@ -28,7 +28,7 @@ public class PerfectMydataActivity extends BaseActivity implements View.OnClickL
 
     @Override
     protected void initController() {
-        mController=new PerfectMydataController(this);
+//        mController=new PerfectMydataController(this);
     }
 
     @Override

@@ -70,7 +70,7 @@
                 android:layout_marginLeft="318dp"
                 android:layout_marginTop="73dp"
                 android:layout_marginBottom="50dp"
-                android:textColor="#ffffff"
+                android:textColor="@color/green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
@@ -80,7 +80,7 @@
                 android:layout_marginTop="73dp"
                 android:layout_marginBottom="50dp"
                 android:layout_marginLeft="48dp"
-                android:textColor="#ff5500"
+                android:textColor="#ffffff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
@@ -245,4 +245,26 @@
         android:src="@mipmap/share_iv"
         android:layout_width="120dp"
         android:layout_height="120dp" />
+    <RelativeLayout
+        android:id="@+id/select_rl"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:background="@drawable/icon_select"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="150dp"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/select_num_tv"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:paddingLeft="70dp"
+            android:textSize="20dp"
+            android:visibility="visible"/>
+    </RelativeLayout>
 </RelativeLayout>

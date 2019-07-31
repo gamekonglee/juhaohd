@@ -326,4 +326,5 @@ public class Constance {
     public static String code_url="code_url";
     public static String article_type="article_type";
     public static String goods_id="goods_id";
+    public static String more="more";
 }

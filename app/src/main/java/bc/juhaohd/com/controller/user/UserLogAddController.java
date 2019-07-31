@@ -10,7 +10,6 @@ import bc.juhaohd.com.cons.Constance;
 import bc.juhaohd.com.controller.BaseController;
 import bc.juhaohd.com.data.LogisticDao;
 import bc.juhaohd.com.ui.activity.user.UserLogAddActivity;
-import bc.juhaohd.com.ui.activity.user.UserLogAddNewActivity;
 import bc.juhaohd.com.utils.UIUtils;
 import bocang.utils.AppDialog;
 import bocang.utils.AppUtils;
@@ -23,18 +22,12 @@ import bocang.utils.MyToast;
  * @description :
  */
 public class UserLogAddController extends BaseController {
-    private UserLogAddNewActivity mView;
+    private UserLogAddActivity mView;
     private EditText logistics_name_tv, logistics_phone_tv, logistics_address_tv;
     private Intent mIntent;
     private String  mId="";
 
     public UserLogAddController(UserLogAddActivity v) {
-//        mView = v;
-        initView();
-        initViewData();
-    }
-
-    public UserLogAddController(UserLogAddNewActivity v) {
         mView = v;
         initView();
         initViewData();
